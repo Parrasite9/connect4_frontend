@@ -4,6 +4,12 @@ import {useState, useEffect} from 'react'
 import Add from './components/Add.js'
 import Edit from './components/Edit'
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+// import {Form, Button} from 'react-bootstrap';  
+
+// import css
+import IndexCSS from './index.module.css';
+
 const App = () => {
 
   let [game, setGame] = useState([])
