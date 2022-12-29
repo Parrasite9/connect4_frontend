@@ -3,6 +3,7 @@ import {useState, useEffect} from 'react'
 
 import Add from './components/Add.js'
 import Edit from './components/Edit'
+import Select from './components/SelectGame'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import {Form, Button} from 'react-bootstrap';  
@@ -14,12 +15,23 @@ const App = () => {
 
   let [game, setGame] = useState([])
 
+  //=========================================================================
+  //Create new game with players
+    const handleCreate = (add) => {
+      axios.post('https://connect4back.herokuapp.com/api/connect4', add).then((response) => {
+          // console.log(response)
+          getGame()
+        })
+    }
+ //=========================================================================
+ //collect from database
   const getGame = () => {
-    axios.get('http://localhost:8000/api/game').then((response) => 
+    axios.get('https://connect4back.herokuapp.com/api/connect4').then((response) => 
     setGame(response.data), (err) => 
     console.log(err))
   }
-
+ //=========================================================================
+ //useEffect to collect from database
   useEffect(() => {
     getGame()
   }, [])
@@ -27,8 +39,9 @@ const App = () => {
 
   return (
     <>
-      <h1>Hello World</h1>
-      <Add />
+      <h1>Connect4</h1>
+      <Add handleCreate={handleCreate}/>
+      <Select game={game}/>
       <Edit />
     </>
   )
