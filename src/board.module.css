@@ -1,0 +1,49 @@
+
+
+.boardContainer{
+    background-color: #0066b2;
+    justify-content: center;
+    margin: 1.5em;
+    border: 1px solid black;
+    display: grid;
+    grid-gap: 0;
+    grid-template-columns: repeat(7, 12%);
+    grid-template-rows: repeat(7, 10vh);
+    grid-template-areas:
+    "z1 z2 z3 z4 z5 z6 z7"
+    "a1 a2 a3 a4 a5 a6 a7"
+    "b1 b2 b3 b4 b5 b6 b7"
+    "c1 c2 c3 c4 c5 c6 c7"
+    "d1 d2 d3 d4 d5 d6 d7"
+    "e1 e2 e3 e4 e5 e6 e7"
+    "f1 f2 f3 f4 f5 f6 f7"
+}
+.circle{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    border: 1px solid black;
+    background-color: cadetblue;
+}
+
+.button{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    border: 1px solid black;
+    background-color: #C0C0C0;
+    justify-content: center;
+    align-items: center;
+}
+/* .wrapper {
+    border: 49px solid #462921;
+    width: 560px;
+    margin: 0 auto;
+    display: grid;
+    grid-gap: 0;
+    grid-template-columns: repeat(8, 70px);
+    grid-template-rows: 40px repeat(8, 70px) 40px;
+    grid-auto-flow: row;
+  } */

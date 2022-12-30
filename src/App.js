@@ -4,6 +4,7 @@ import {useState, useEffect} from 'react'
 import Add from './components/Add.js'
 import Edit from './components/Edit'
 import Select from './components/SelectGame'
+import Board from './components/Player1_Board'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import {Form, Button} from 'react-bootstrap';  
@@ -14,6 +15,15 @@ import IndexCSS from './index.module.css';
 const App = () => {
 
   let [game, setGame] = useState([])
+
+  //=========================================================================
+  //eDIT GAME
+  const handleUpdate = (editGame) => {
+    // console.log(editHero)
+    axios.put('http://localhost:8000/api/games/' + editGame.id, editGame).then((response) => {
+      getGame()
+      })
+  }
 
   //=========================================================================
   //Create new game with players
@@ -43,6 +53,7 @@ const App = () => {
       <Add handleCreate={handleCreate}/>
       <Select game={game}/>
       <Edit />
+      <Board handleUpdate={handleUpdate} game={game}/>
     </>
   )
 }
