@@ -16,11 +16,20 @@ const App = () => {
 
   let [game, setGame] = useState([])
 
+
+  const handleDelete = (event) => {
+    axios.delete('https://connect4back.herokuapp.com/api/connect4/' + event.id).then((response) => {
+        getGame();
+      })
+  }
+
   //=========================================================================
-  //eDIT GAME
-  const handleUpdate = (editGame) => {
-    axios.put('https://connect4back.herokuapp.com/api/connect4' + editGame.id, editGame).then((response) => {
-      getGame()
+  //EDIT GAME
+  const handleUpdate = (game) => {
+    console.log("update")
+    console.log(game)
+    axios.put('https://connect4back.herokuapp.com/api/connect4/' + game.id, game).then((response) => {
+      getGame();
       })
   }
 
@@ -28,12 +37,13 @@ const App = () => {
   //Create new game with players
     const handleCreate = (add) => {
       axios.post('https://connect4back.herokuapp.com/api/connect4', add).then((response) => {
-          getGame()
+          getGame();
         })
     }
  //=========================================================================
  //collect from database
   const getGame = () => {
+    console.log(game);
     axios.get('https://connect4back.herokuapp.com/api/connect4').then((response) => 
     setGame(response.data), (err) => 
     console.log(err))
@@ -41,7 +51,7 @@ const App = () => {
  //=========================================================================
  //useEffect to collect from database
   useEffect(() => {
-    getGame()
+    getGame();
   }, [])
 
 
@@ -52,7 +62,12 @@ const App = () => {
         <Add handleCreate={handleCreate}/>
         <Select game={game}/>
         <Edit />
-        <Board handleUpdate={handleUpdate} game={game}/>
+        {game.map((game) => {
+        return (
+          <div key={game.id}>
+          <Board game={game} handleDelete={handleDelete} handleUpdate={handleUpdate}/>
+          </div>
+        )})}
       </div>
     </>
   )
