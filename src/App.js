@@ -47,11 +47,13 @@ const App = () => {
 
   return (
     <>
-      <h1>Connect4</h1>
-      <Add handleCreate={handleCreate}/>
-      <Select game={game}/>
-      <Edit />
-      <Board handleUpdate={handleUpdate} game={game}/>
+    <h1>Connect4</h1>
+      <div key={game.id}>
+        <Add handleCreate={handleCreate}/>
+        <Select game={game}/>
+        <Edit />
+        <Board handleUpdate={handleUpdate} game={game}/>
+      </div>
     </>
   )
 }

@@ -1,9 +1,9 @@
-// import {useState, UseEffect} from 'react'
+import {useState, useEffect} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {DropdownButton, Dropdown} from 'react-bootstrap';  
 
 const Select = (props) => {
-
+  const [game, setGame] = useState({...props.game})
 
     return (
       <>

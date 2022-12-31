@@ -7,21 +7,14 @@ const Board = (props) => {
 
     const [game, setGame] = useState({...props.game})
 
-    const handleSubmit = () => {
+    const handleSubmit = (event) => {
         // event.preventDefault()
         props.handleUpdate(game)
       }
 
-    // const handleChange = (event) => {
-    //     console.log(game);
-    //     setGame({ ...game, [event.target.name]: event.target.getAttribute('data-value') })
-    //     handleSubmit();
-    // }
-
     const handleColumn1 = (game) =>{
         if(game.f1 === 0){
             console.log("f1");
-            // document.getElementById("f1").setAttribute("data-value", 1);
             setGame({ ...game, f1: 1 })
             console.log(game)
             handleSubmit();
@@ -73,6 +66,12 @@ const Board = (props) => {
         <>
         {props.game.map((game) => {
         return (
+        <>
+            <div>
+            {
+                game.user1_turn === true ? <h1>Select Option Below</h1>: <h1>Other players turn</h1>
+            }
+            </div>
         <div className={BoardCSS.boardContainer} key={game.id}>
             <div className={BoardCSS.z1}>
                 <button className={`${BoardCSS.circle_z1} ${BoardCSS.button}`} data-value={game.z1} onClick={ () => {handleColumn1(game); console.log(game);}}> 1
@@ -271,8 +270,9 @@ const Board = (props) => {
                 </div>
             </div>
         </div>
+        </>
         )
-        })}
+        })} 
         </>
       )
   }
