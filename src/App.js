@@ -19,8 +19,7 @@ const App = () => {
   //=========================================================================
   //eDIT GAME
   const handleUpdate = (editGame) => {
-    // console.log(editHero)
-    axios.put('http://localhost:8000/api/games/' + editGame.id, editGame).then((response) => {
+    axios.put('https://connect4back.herokuapp.com/api/connect4' + editGame.id, editGame).then((response) => {
       getGame()
       })
   }
@@ -29,7 +28,6 @@ const App = () => {
   //Create new game with players
     const handleCreate = (add) => {
       axios.post('https://connect4back.herokuapp.com/api/connect4', add).then((response) => {
-          // console.log(response)
           getGame()
         })
     }
