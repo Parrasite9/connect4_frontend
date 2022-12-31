@@ -3,15 +3,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {DropdownButton, Dropdown} from 'react-bootstrap';  
 
 const Select = (props) => {
-  const [game, setGame] = useState({...props.game})
+  const [games, setGame] = useState({...props.games})
 
     return (
       <>
       <DropdownButton id="dropdown-item-button" title="Select Game">
-      {props.game.map((game) => {
+      {props.games.map((games) => {
         return (
-          <div className="game" key={game.id}>
-            <Dropdown.Item as="button" eventKey={game.game_name}>{game.game_name}</Dropdown.Item>
+          <div className="game" key={games.id}>
+            <Dropdown.Item as="button" eventKey={games.game_name}>{games.game_name}</Dropdown.Item>
           </div>
         )
     })}

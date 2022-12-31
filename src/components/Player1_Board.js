@@ -8,7 +8,7 @@ const Board = (props) => {
 
     //================================================================
     //pass in props handle function for update
-    const handleSubmit = (game) => {
+    const handleSubmit = () => {
         props.handleUpdate(game);
       }
     //================================================================
@@ -21,173 +21,159 @@ const Board = (props) => {
     const handleColumn1 = (game) =>{
         if(game.f1 === 0){
             setGame({ ...game, f1: 1, user1_turn: false, user2_turn: true})
-            return handleSubmit(game);
+            return;
         } else if (game.e1 === 0){
             setGame({ ...game, e1: 1, user1_turn: false, user2_turn: true});
-            return handleSubmit(game);
+            return;
         } else if (game.d1 === 0){
             setGame({ ...game, d1: 1, user1_turn: false, user2_turn: true});
-            return handleSubmit(game);
+            return;
         } else if (game.c1 === 0){
             setGame({ ...game, c1: 1, user1_turn: false, user2_turn: true});
-            return handleSubmit(game);
+            return;
         } else if (game.b1 === 0){
             setGame({ ...game, b1: 1, user1_turn: false, user2_turn: true});
-            return handleSubmit(game);
+            return;
         } else if (game.a1 === 0){
             setGame({ ...game, a1: 1, user1_turn: false, user2_turn: true});
-            return handleSubmit(game);
-        } else {
-            console.log("uh oh")
-        }
+            return;
+        } 
     }
     //================================================================
     //pass in handle function to edit column 2
     const handleColumn2 = () =>{
         if(game.f2 === 0){
             setGame({ ...game, f2: 1, user1_turn: false, user2_turn: true});
-            return handleSubmit(game);
+            return;
         } else if (game.e2 === 0){
             setGame({ ...game, e2: 1, user1_turn: false, user2_turn: true});
-            return handleSubmit(game);
+            return;
         } else if (game.d2 === 0){
             setGame({ ...game, d2: 1, user1_turn: false, user2_turn: true});
-            return handleSubmit(game);
+            return;
         } else if (game.c2 === 0){
             setGame({ ...game, c2: 1, user1_turn: false, user2_turn: true});
-            return handleSubmit(game);
+            return;
         } else if (game.b2 === 0){
             setGame({ ...game, b2: 1, user1_turn: false, user2_turn: true});
-            return handleSubmit(game);
+            return;
         } else if (game.a2 === 0){
             setGame({ ...game, a2: 1, user1_turn: false, user2_turn: true});
-            return handleSubmit(game);
-        } else {
-            console.log("uh oh")
-        }
+            return;
+        } 
     }
     //================================================================
     //pass in handle function to edit column 3
     const handleColumn3 = () =>{
         if(game.f3 === 0){
             setGame({ ...game, f3: 1, user1_turn: false, user2_turn: true});
-            return handleSubmit(game);
+            return;
         } else if (game.e3 === 0){
             setGame({ ...game, e3: 1, user1_turn: false, user2_turn: true});
-            return handleSubmit(game);
+            return;
         } else if (game.d3 === 0){
             setGame({ ...game, d3: 1, user1_turn: false, user2_turn: true});
-            return handleSubmit(game);
+            return;
         } else if (game.c3 === 0){
             setGame({ ...game, c3: 1, user1_turn: false, user2_turn: true});
-            return handleSubmit(game);
+            return;
         } else if (game.b3 === 0){
             setGame({ ...game, b3: 1, user1_turn: false, user2_turn: true});
-            return handleSubmit(game);
+            return;
         } else if (game.a3 === 0){
             setGame({ ...game, a3: 1, user1_turn: false, user2_turn: true});
-            return handleSubmit(game);
-        } else {
-            console.log("uh oh")
-        }
+            return;
+        } 
     }
     //================================================================
     //pass in handle function to edit column 3
     const handleColumn4 = () =>{
         if(game.f4 === 0){
             setGame({ ...game, f4: 1, user1_turn: false, user2_turn: true});
-            return handleSubmit(game);
+            return;
         } else if (game.e4 === 0){
             setGame({ ...game, e4: 1, user1_turn: false, user2_turn: true});
-            return handleSubmit(game);
+            return;
         } else if (game.d4 === 0){
             setGame({ ...game, d4: 1, user1_turn: false, user2_turn: true});
-            return handleSubmit(game);
+            return;
         } else if (game.c4 === 0){
             setGame({ ...game, c4: 1, user1_turn: false, user2_turn: true});
-            return handleSubmit(game);
+            return;
         } else if (game.b4 === 0){
             setGame({ ...game, b4: 1, user1_turn: false, user2_turn: true});
-            return handleSubmit(game);
+            return;
         } else if (game.a4 === 0){
             setGame({ ...game, a4: 1, user1_turn: false, user2_turn: true});
-            return handleSubmit(game);
-        } else {
-            console.log("uh oh")
-        }
+            return;
+        } 
     }
     const handleColumn5 = () =>{
         if(game.f5 === 0){
             setGame({ ...game, f5: 1, user1_turn: false, user2_turn: true});
-            return handleSubmit(game);
+            return;
         } else if (game.e5 === 0){
             setGame({ ...game, e5: 1, user1_turn: false, user2_turn: true});
-            return handleSubmit(game);
+            return;
         } else if (game.d5 === 0){
             setGame({ ...game, d5: 1, user1_turn: false, user2_turn: true});
-            return handleSubmit(game);
+            return;
         } else if (game.c5 === 0){
             setGame({ ...game, c5: 1, user1_turn: false, user2_turn: true});
-            return handleSubmit(game);
+            return;
         } else if (game.b5 === 0){
             setGame({ ...game, b5: 1, user1_turn: false, user2_turn: true});
-            return handleSubmit(game);
+            return;
         } else if (game.a5 === 0){
             setGame({ ...game, a5: 1, user1_turn: false, user2_turn: true});
-            return handleSubmit(game);
-        } else {
-            console.log("uh oh")
-        }
+            return;
+        } 
     }
     const handleColumn6 = () =>{
         if(game.f6 === 0){
             setGame({ ...game, f6: 1, user1_turn: false, user2_turn: true});
-            return handleSubmit(game);
+            return;
         } else if (game.e6 === 0){
             setGame({ ...game, e6: 1, user1_turn: false, user2_turn: true});
-            return handleSubmit(game);
+            return;
         } else if (game.d6 === 0){
             setGame({ ...game, d6: 1, user1_turn: false, user2_turn: true});
-            return handleSubmit(game);
+            return;
         } else if (game.c6 === 0){
             setGame({ ...game, c6: 1, user1_turn: false, user2_turn: true});
-            return handleSubmit(game);
+            return;
         } else if (game.b6 === 0){
             setGame({ ...game, b6: 1, user1_turn: false, user2_turn: true});
-            return handleSubmit(game);
+            return;
         } else if (game.a6 === 0){
             setGame({ ...game, a6: 1, user1_turn: false, user2_turn: true});
-            return handleSubmit(game);
-        } else {
-            console.log("uh oh")
-        }
+            return;
+        } 
     }
     const handleColumn7 = () =>{
         if(game.f7 === 0){
             setGame({ ...game, f7: 1, user1_turn: false, user2_turn: true});
-            return handleSubmit(game);
+            return;
         } else if (game.e7 === 0){
             setGame({ ...game, e7: 1, user1_turn: false, user2_turn: true});
-            return handleSubmit(game);
+            return;
         } else if (game.d7 === 0){
             setGame({ ...game, d7: 1, user1_turn: false, user2_turn: true});
-            return handleSubmit(game);
+            return;
         } else if (game.c7 === 0){
             setGame({ ...game, c7: 1, user1_turn: false, user2_turn: true});
-            return handleSubmit(game);
+            return;
         } else if (game.b7 === 0){
             setGame({ ...game, b7: 1, user1_turn: false, user2_turn: true});
-            return handleSubmit(game);
+            return;
         } else if (game.a7 === 0){
             setGame({ ...game, a7: 1, user1_turn: false, user2_turn: true});
-            return handleSubmit(game);
-        } else {
-            console.log("uh oh")
-        }
+            return;
+        } 
     }
 
     useEffect(() => {
-        
+        handleSubmit()
       }, [game]);
 
         return (
@@ -195,7 +181,7 @@ const Board = (props) => {
         <div key={game.id}>
             <div>
             {
-                game.user1_turn === true ? <h1>Select Option Below</h1>: <h1>Other players turn</h1>
+                game.user1_turn === true ? <h1>Select Option Below</h1>: <h1>Player 2 Turn</h1>
             }
             </div>
             <div>
