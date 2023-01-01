@@ -66,8 +66,8 @@ const App = () => {
         {games.map((game) => {
         return (
           <div key={game.id}>
-          <Board1 game={game} handleDelete={handleDelete} handleUpdate={handleUpdate}/>
-          <Board2 game={game} handleDelete={handleDelete} handleUpdate={handleUpdate}/>
+          <Board1 game1={game} handleDelete={handleDelete} handleUpdate={handleUpdate}/>
+          <Board2 game2={game} handleDelete={handleDelete} handleUpdate={handleUpdate}/>
           </div>
         )})}
       </div>

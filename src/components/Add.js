@@ -1,4 +1,7 @@
 import {useState} from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {Form, Button} from 'react-bootstrap';  
+import AddCSS from '../add.module.css';
 
 const Add = (props) => {
     let emptyGame = { game_name: '', username1: '', username2: ''}
@@ -18,21 +21,27 @@ const Add = (props) => {
     }
   
     return (
-      <>
-      <form onSubmit={handleSubmit}>
-          <label htmlFor="name">Game Name: </label>
-          <input type="text" value={game.game_name} name="game_name" onChange={handleChange} />
+      <div className={AddCSS.formContainer}>
+        <div className={AddCSS.form}>
+        <Form onSubmit={handleSubmit} >
+          <Form.Label htmlFor="name">Game Name: </Form.Label>
+          <Form.Control type="text" value={game.game_name} name="game_name" onChange={handleChange} />
           <br /><br />
-          <label htmlFor="players">Player 1 Username: </label>
-          <input type="text" value={game.username1} name="username1"  onChange={handleChange} />
+          <Form.Label htmlFor="players">Player 1 Username: </Form.Label>
+          <Form.Control type="text" value={game.username1} name="username1"  onChange={handleChange} />
           <br /><br />
-          <label htmlFor="type">Player 2 Username: </label>
-          <input type="text" value={game.username2} name="username2"  onChange={handleChange} />
-          <br /><br />
-          <input type="submit"/>
-      </form>
-      <button onClick={()=>{props.setAdd(false)}}>Cancel</button>
-      </>
+          <Form.Label htmlFor="type">Player 2 Username: </Form.Label>
+          <Form.Control type="text" value={game.username2} name="username2"  onChange={handleChange} />
+          <div  className={AddCSS.submit}>
+            <Button variant="success" type="submit">Submit</Button>
+          </div>
+          
+        </Form>
+        <div className={AddCSS.cancel}>
+          <Button variant="light" onClick={()=>{props.setAdd(false)}}>Cancel</Button>
+        </div>
+      </div>
+      </div>
     )
 }
 

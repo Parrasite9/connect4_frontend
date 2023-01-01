@@ -3,7 +3,7 @@ import BoardCSS from '../board.module.css';
 
 const Board2 = (props) => {
 
-    let [game, setGame] = useState({...props.game})
+    let [game, setGame] = useState({...props.game2})
 
     //================================================================
     //change color based on user choice
@@ -190,9 +190,12 @@ const Board2 = (props) => {
 
     // use effect to submit after state change
     useEffect(() => {
-        handleSubmit();
-        classHandle();
+        handleSubmit(game);
       }, [game]);
+
+      useEffect(() => {
+        setGame(props.game2);
+      }, [props.game2.user1_turn, props.game2.user2_turn]);
 
     //   display on page
         return (
