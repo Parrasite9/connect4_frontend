@@ -2,6 +2,7 @@ import axios from 'axios'
 import {useState, useEffect} from 'react'
 import Header from './components/Header.js'
 import Add from './components/Add.js'
+import Rules from './components/Rules.js'
 import Select from './components/SelectGame'
 import Board1 from './components/Player1_Board'
 import Board2 from './components/Player2_Board'
@@ -15,6 +16,7 @@ const App = () => {
 
   let [games, setGames] = useState([])
   let [showAdd, setAdd] = useState(false)
+  let [showRules, setRules] = useState(false)
 
   //=========================================================================
   //DELETE GAME
@@ -57,8 +59,11 @@ const App = () => {
 
   return (
     <>
-    <Header setAdd={setAdd}/>
+    <Header setAdd={setAdd} setRules={setRules}/>
       <div key={games.id}>
+        {
+          showRules === true ? <Rules setRules={setRules}/> : null
+        }
         {
           showAdd === true ? <Add handleCreate={handleCreate} setAdd={setAdd}/> : null
         }

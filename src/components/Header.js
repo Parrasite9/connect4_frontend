@@ -17,6 +17,11 @@ const Header = (props) => {
         <div className={HeaderCSS.headerSelect}>
             <p>Select Game</p>
         </div>
+        <a href="#" className={HeaderCSS.headerRules}>
+        <div onClick={()=>{props.setRules(true)}}>
+            <p>Rules</p>
+        </div>
+        </a>
     </header>
     )
 }

@@ -1,5 +1,7 @@
 import {useState, useEffect} from 'react'
 import BoardCSS from '../board.module.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {Button} from 'react-bootstrap';  
 
 const Board2 = (props) => {
 
@@ -207,7 +209,11 @@ const Board2 = (props) => {
             }
             </div>
             <div>
-                <button onClick={() => {handleSubmitDelete(game)}}>Delete Game</button>
+                <div className={BoardCSS.legend}>
+                    <p>Your Color:  </p><div className={BoardCSS.P2legend}/>
+                    <p>Opponent Color:  </p><div className={BoardCSS.P1legend}/>
+                </div>
+                <Button variant="outline-danger" onClick={() => {handleSubmitDelete(game)}}>Delete Game</Button>
             </div>
         <div className={BoardCSS.boardContainer}>
             <button className={`${BoardCSS.button} ${game.user2_turn === false? BoardCSS.buttonNull : null }`} onClick={ () => {if(game.user2_turn === true){handleColumn1(game)}}}> &#8659; </button>

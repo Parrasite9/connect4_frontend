@@ -3,7 +3,7 @@
 .header{
     width: 97%;
     display: inline-grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto auto auto auto;
     text-align: center;
     border: 2px solid black;
     margin: 1em;
@@ -19,7 +19,7 @@
     color: yellow;
 }
 
-.headerCreate{
+.headerCreate ,.headerSelect{
     padding-top: 5px;
     font-size: 1.3rem;
     background-color: #e2e4d7;
@@ -28,19 +28,27 @@
     color: black;
 }
 
-.headerCreate:hover{
+.headerRules{
+    padding-top: 5px;
+    font-size: 1.3rem;
+    background-color: #e2e4d7;
+    text-decoration: none;
+    color: black;
+}
+
+.headerCreate:hover, .headerSelect:hover, .headerRules:hover{
     background: rgb(255,255,255);
     background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(226,228,215,1) 100%);
     color: black;
 }
 
-.headerSelect{
-    padding-top: 5px;
-    font-size: 1.3rem;
-    background-color: #e2e4d7;
-}
-
 .headerSelect:hover{
     background: rgb(255,255,255);
     background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(226,228,215,1) 100%);
+}
+
+@media only screen and (max-width: 600px) {
+    .headerTitle, .headerCreate ,.headerSelect, .headerRules{
+        font-size: 0.8rem;
+    }
 }

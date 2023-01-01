@@ -38,7 +38,7 @@ const Add = (props) => {
           
         </Form>
         <div className={AddCSS.cancel}>
-          <Button variant="light" onClick={()=>{props.setAdd(false)}}>Cancel</Button>
+          <Button variant="secondary" onClick={()=>{props.setAdd(false)}}>Cancel</Button>
         </div>
       </div>
       </div>
