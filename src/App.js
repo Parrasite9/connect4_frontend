@@ -3,7 +3,8 @@ import {useState, useEffect} from 'react'
 import Header from './components/Header.js'
 import Add from './components/Add.js'
 import Select from './components/SelectGame'
-import Board from './components/Player1_Board'
+import Board1 from './components/Player1_Board'
+import Board2 from './components/Player2_Board'
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import {Form, Button} from 'react-bootstrap';  
 
@@ -65,7 +66,8 @@ const App = () => {
         {games.map((game) => {
         return (
           <div key={game.id}>
-          <Board game={game} handleDelete={handleDelete} handleUpdate={handleUpdate}/>
+          <Board1 game={game} handleDelete={handleDelete} handleUpdate={handleUpdate}/>
+          <Board2 game={game} handleDelete={handleDelete} handleUpdate={handleUpdate}/>
           </div>
         )})}
       </div>

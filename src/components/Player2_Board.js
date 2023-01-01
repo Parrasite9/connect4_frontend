@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react'
 import BoardCSS from '../board.module.css';
 
-const Board1 = (props) => {
+const Board2 = (props) => {
 
     let [game, setGame] = useState({...props.game})
 
@@ -30,22 +30,22 @@ const Board1 = (props) => {
     //pass in handle function to edit column 1
     const handleColumn1 = (game) =>{
         if(game.f1 === 0){
-            setGame({ ...game, f1: 1, user1_turn: false, user2_turn: true})
+            setGame({ ...game, f1: 2, user2_turn: false, user1_turn: true})
             return;
         } else if (game.e1 === 0){
-            setGame({ ...game, e1: 1, user1_turn: false, user2_turn: true});
+            setGame({ ...game, e1: 2, user2_turn: false, user1_turn: true});
             return;
         } else if (game.d1 === 0){
-            setGame({ ...game, d1: 1, user1_turn: false, user2_turn: true});
+            setGame({ ...game, d1: 2, user2_turn: false, user1_turn: true});
             return;
         } else if (game.c1 === 0){
-            setGame({ ...game, c1: 1, user1_turn: false, user2_turn: true});
+            setGame({ ...game, c1: 2, user2_turn: false, user1_turn: true});
             return;
         } else if (game.b1 === 0){
-            setGame({ ...game, b1: 1, user1_turn: false, user2_turn: true});
+            setGame({ ...game, b1: 2, user2_turn: false, user1_turn: true});
             return;
         } else if (game.a1 === 0){
-            setGame({ ...game, a1: 1, user1_turn: false, user2_turn: true});
+            setGame({ ...game, a1: 2, user2_turn: false, user1_turn: true});
             return;
         } 
     }
@@ -53,22 +53,22 @@ const Board1 = (props) => {
     //pass in handle function to edit column 2
     const handleColumn2 = () =>{
         if(game.f2 === 0){
-            setGame({ ...game, f2: 1, user1_turn: false, user2_turn: true});
+            setGame({ ...game, f2: 2, user2_turn: false, user1_turn: true});
             return;
         } else if (game.e2 === 0){
-            setGame({ ...game, e2: 1, user1_turn: false, user2_turn: true});
+            setGame({ ...game, e2: 2, user2_turn: false, user1_turn: true});
             return;
         } else if (game.d2 === 0){
-            setGame({ ...game, d2: 1, user1_turn: false, user2_turn: true});
+            setGame({ ...game, d2: 2, user2_turn: false, user1_turn: true});
             return;
         } else if (game.c2 === 0){
-            setGame({ ...game, c2: 1, user1_turn: false, user2_turn: true});
+            setGame({ ...game, c2: 2, user2_turn: false, user1_turn: true});
             return;
         } else if (game.b2 === 0){
-            setGame({ ...game, b2: 1, user1_turn: false, user2_turn: true});
+            setGame({ ...game, b2: 2, user2_turn: false, user1_turn: true});
             return;
         } else if (game.a2 === 0){
-            setGame({ ...game, a2: 1, user1_turn: false, user2_turn: true});
+            setGame({ ...game, a2: 2, user2_turn: false, user1_turn: true});
             return;
         } 
     }
@@ -76,22 +76,22 @@ const Board1 = (props) => {
     //pass in handle function to edit column 3
     const handleColumn3 = () =>{
         if(game.f3 === 0){
-            setGame({ ...game, f3: 1, user1_turn: false, user2_turn: true});
+            setGame({ ...game, f3: 2, user2_turn: false, user1_turn: true});
             return;
         } else if (game.e3 === 0){
-            setGame({ ...game, e3: 1, user1_turn: false, user2_turn: true});
+            setGame({ ...game, e3: 2, user2_turn: false, user1_turn: true});
             return;
         } else if (game.d3 === 0){
-            setGame({ ...game, d3: 1, user1_turn: false, user2_turn: true});
+            setGame({ ...game, d3: 2, user2_turn: false, user1_turn: true});
             return;
         } else if (game.c3 === 0){
-            setGame({ ...game, c3: 1, user1_turn: false, user2_turn: true});
+            setGame({ ...game, c3: 2, user2_turn: false, user1_turn: true});
             return;
         } else if (game.b3 === 0){
-            setGame({ ...game, b3: 1, user1_turn: false, user2_turn: true});
+            setGame({ ...game, b3: 2, user2_turn: false, user1_turn: true});
             return;
         } else if (game.a3 === 0){
-            setGame({ ...game, a3: 1, user1_turn: false, user2_turn: true});
+            setGame({ ...game, a3: 2, user2_turn: false, user1_turn: true});
             return;
         } 
     }
@@ -99,22 +99,22 @@ const Board1 = (props) => {
     //pass in handle function to edit column 4
     const handleColumn4 = () =>{
         if(game.f4 === 0){
-            setGame({ ...game, f4: 1, user1_turn: false, user2_turn: true});
+            setGame({ ...game, f4: 2, user2_turn: false, user1_turn: true});
             return;
         } else if (game.e4 === 0){
-            setGame({ ...game, e4: 1, user1_turn: false, user2_turn: true});
+            setGame({ ...game, e4: 2, user2_turn: false, user1_turn: true});
             return;
         } else if (game.d4 === 0){
-            setGame({ ...game, d4: 1, user1_turn: false, user2_turn: true});
+            setGame({ ...game, d4: 2, user2_turn: false, user1_turn: true});
             return;
         } else if (game.c4 === 0){
-            setGame({ ...game, c4: 1, user1_turn: false, user2_turn: true});
+            setGame({ ...game, c4: 2, user2_turn: false, user1_turn: true});
             return;
         } else if (game.b4 === 0){
-            setGame({ ...game, b4: 1, user1_turn: false, user2_turn: true});
+            setGame({ ...game, b4: 2, user2_turn: false, user1_turn: true});
             return;
         } else if (game.a4 === 0){
-            setGame({ ...game, a4: 1, user1_turn: false, user2_turn: true});
+            setGame({ ...game, a4: 2, user2_turn: false, user1_turn: true});
             return;
         } 
     }
@@ -122,22 +122,22 @@ const Board1 = (props) => {
     //pass in handle function to edit column 5
     const handleColumn5 = () =>{
         if(game.f5 === 0){
-            setGame({ ...game, f5: 1, user1_turn: false, user2_turn: true});
+            setGame({ ...game, f5: 2, user2_turn: false, user1_turn: true});
             return;
         } else if (game.e5 === 0){
-            setGame({ ...game, e5: 1, user1_turn: false, user2_turn: true});
+            setGame({ ...game, e5: 2, user2_turn: false, user1_turn: true});
             return;
         } else if (game.d5 === 0){
-            setGame({ ...game, d5: 1, user1_turn: false, user2_turn: true});
+            setGame({ ...game, d5: 2, user2_turn: false, user1_turn: true});
             return;
         } else if (game.c5 === 0){
-            setGame({ ...game, c5: 1, user1_turn: false, user2_turn: true});
+            setGame({ ...game, c5: 2, user2_turn: false, user1_turn: true});
             return;
         } else if (game.b5 === 0){
-            setGame({ ...game, b5: 1, user1_turn: false, user2_turn: true});
+            setGame({ ...game, b5: 2, user2_turn: false, user1_turn: true});
             return;
         } else if (game.a5 === 0){
-            setGame({ ...game, a5: 1, user1_turn: false, user2_turn: true});
+            setGame({ ...game, a5: 2, user2_turn: false, user1_turn: true});
             return;
         } 
     }
@@ -145,22 +145,22 @@ const Board1 = (props) => {
     //pass in handle function to edit column 6
     const handleColumn6 = () =>{
         if(game.f6 === 0){
-            setGame({ ...game, f6: 1, user1_turn: false, user2_turn: true});
+            setGame({ ...game, f6: 2, user2_turn: false, user1_turn: true});
             return;
         } else if (game.e6 === 0){
-            setGame({ ...game, e6: 1, user1_turn: false, user2_turn: true});
+            setGame({ ...game, e6: 2, user2_turn: false, user1_turn: true});
             return;
         } else if (game.d6 === 0){
-            setGame({ ...game, d6: 1, user1_turn: false, user2_turn: true});
+            setGame({ ...game, d6: 2, user2_turn: false, user1_turn: true});
             return;
         } else if (game.c6 === 0){
-            setGame({ ...game, c6: 1, user1_turn: false, user2_turn: true});
+            setGame({ ...game, c6: 2, user2_turn: false, user1_turn: true});
             return;
         } else if (game.b6 === 0){
-            setGame({ ...game, b6: 1, user1_turn: false, user2_turn: true});
+            setGame({ ...game, b6: 2, user2_turn: false, user1_turn: true});
             return;
         } else if (game.a6 === 0){
-            setGame({ ...game, a6: 1, user1_turn: false, user2_turn: true});
+            setGame({ ...game, a6: 2, user2_turn: false, user1_turn: true});
             return;
         } 
     }
@@ -168,22 +168,22 @@ const Board1 = (props) => {
     //pass in handle function to edit column 7
     const handleColumn7 = () =>{
         if(game.f7 === 0){
-            setGame({ ...game, f7: 1, user1_turn: false, user2_turn: true});
+            setGame({ ...game, f7: 2, user2_turn: false, user1_turn: true});
             return;
         } else if (game.e7 === 0){
-            setGame({ ...game, e7: 1, user1_turn: false, user2_turn: true});
+            setGame({ ...game, e7: 2, user2_turn: false, user1_turn: true});
             return;
         } else if (game.d7 === 0){
-            setGame({ ...game, d7: 1, user1_turn: false, user2_turn: true});
+            setGame({ ...game, d7: 2, user2_turn: false, user1_turn: true});
             return;
         } else if (game.c7 === 0){
-            setGame({ ...game, c7: 1, user1_turn: false, user2_turn: true});
+            setGame({ ...game, c7: 2, user2_turn: false, user1_turn: true});
             return;
         } else if (game.b7 === 0){
-            setGame({ ...game, b7: 1, user1_turn: false, user2_turn: true});
+            setGame({ ...game, b7: 2, user2_turn: false, user1_turn: true});
             return;
         } else if (game.a7 === 0){
-            setGame({ ...game, a7: 1, user1_turn: false, user2_turn: true});
+            setGame({ ...game, a7: 2, user2_turn: false, user1_turn: true});
             return;
         } 
     }
@@ -200,20 +200,20 @@ const Board1 = (props) => {
         <div className={BoardCSS.container} key={game.id}>
             <div className={BoardCSS.message}>
             {
-                game.user1_turn === true ? <h1>Select Option Below</h1>: <h1>Opponent Turn</h1>
+                game.user2_turn === true ? <h1>Select Option Below</h1>: <h1>Opponent Turn</h1>
             }
             </div>
             <div>
                 <button onClick={() => {handleSubmitDelete(game)}}>Delete Game</button>
             </div>
         <div className={BoardCSS.boardContainer}>
-            <button className={`${BoardCSS.button} ${game.user1_turn === false? BoardCSS.buttonNull : null }`} onClick={ () => {if(game.user1_turn === true){handleColumn1(game)}}}> &#8659; </button>
-            <button className={`${BoardCSS.button} ${game.user1_turn === false? BoardCSS.buttonNull : null }`} onClick={ () => {if(game.user1_turn === true){handleColumn2(game)}}}> &#8659; </button>
-            <button className={`${BoardCSS.button} ${game.user1_turn === false? BoardCSS.buttonNull : null }`} onClick={ () => {if(game.user1_turn === true){handleColumn3(game)}}}> &#8659; </button>
-            <button className={`${BoardCSS.button} ${game.user1_turn === false? BoardCSS.buttonNull : null }`} onClick={ () => {if(game.user1_turn === true){handleColumn4(game)}}}> &#8659; </button>
-            <button className={`${BoardCSS.button} ${game.user1_turn === false? BoardCSS.buttonNull : null }`} onClick={ () => {if(game.user1_turn === true){handleColumn5(game)}}}> &#8659; </button>
-            <button className={`${BoardCSS.button} ${game.user1_turn === false? BoardCSS.buttonNull : null }`} onClick={ () => {if(game.user1_turn === true){handleColumn6(game)}}}> &#8659; </button>
-            <button className={`${BoardCSS.button} ${game.user1_turn === false? BoardCSS.buttonNull : null }`} onClick={ () => {if(game.user1_turn === true){handleColumn7(game)}}}> &#8659; </button>
+            <button className={`${BoardCSS.button} ${game.user2_turn === false? BoardCSS.buttonNull : null }`} onClick={ () => {if(game.user2_turn === true){handleColumn1(game)}}}> &#8659; </button>
+            <button className={`${BoardCSS.button} ${game.user2_turn === false? BoardCSS.buttonNull : null }`} onClick={ () => {if(game.user2_turn === true){handleColumn2(game)}}}> &#8659; </button>
+            <button className={`${BoardCSS.button} ${game.user2_turn === false? BoardCSS.buttonNull : null }`} onClick={ () => {if(game.user2_turn === true){handleColumn3(game)}}}> &#8659; </button>
+            <button className={`${BoardCSS.button} ${game.user2_turn === false? BoardCSS.buttonNull : null }`} onClick={ () => {if(game.user2_turn === true){handleColumn4(game)}}}> &#8659; </button>
+            <button className={`${BoardCSS.button} ${game.user2_turn === false? BoardCSS.buttonNull : null }`} onClick={ () => {if(game.user2_turn === true){handleColumn5(game)}}}> &#8659; </button>
+            <button className={`${BoardCSS.button} ${game.user2_turn === false? BoardCSS.buttonNull : null }`} onClick={ () => {if(game.user2_turn === true){handleColumn6(game)}}}> &#8659; </button>
+            <button className={`${BoardCSS.button} ${game.user2_turn === false? BoardCSS.buttonNull : null }`} onClick={ () => {if(game.user2_turn === true){handleColumn7(game)}}}> &#8659; </button>
             {/* start of connect4 board */}
             <div id = "a1" className={`${classHandle(game.a1)}`} name="a1"/>    
             <div id = "a2" className={`${classHandle(game.a2)}`} name="a2"/>   
@@ -263,4 +263,4 @@ const Board1 = (props) => {
       )
   }
   
-  export default Board1
+  export default Board2

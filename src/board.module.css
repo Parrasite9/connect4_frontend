@@ -6,9 +6,6 @@
     text-align: center;
 }
 
-.message{
-
-}
 
 .boardContainer{
     padding: 1em 0 1em 0;
@@ -48,7 +45,7 @@
         background-color: red; 
 }
 
-.circleBlue{
+.circleYellow{
     display: flex;
     height: 100%;
     width: 100%;

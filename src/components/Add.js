@@ -14,6 +14,7 @@ const Add = (props) => {
       event.preventDefault();
       props.handleCreate(game);
       setGame(emptyGame);
+      props.setAdd(false)
     }
   
     return (
@@ -28,7 +29,7 @@ const Add = (props) => {
           <label htmlFor="type">Player 2 Username: </label>
           <input type="text" value={game.username2} name="username2"  onChange={handleChange} />
           <br /><br />
-          <input type="submit" onClick={()=>{props.setAdd(false)}}/>
+          <input type="submit"/>
       </form>
       <button onClick={()=>{props.setAdd(false)}}>Cancel</button>
       </>
