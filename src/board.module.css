@@ -1,9 +1,20 @@
 
+.container{
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.message{
+
+}
 
 .boardContainer{
+    padding: 1em 0 1em 0;
     background-color: #0066b2;
     justify-content: center;
-    margin: 1.5em;
+    margin: 1em auto 1em auto;
     border: 1px solid black;
     display: grid;
     grid-gap: 0;
@@ -25,7 +36,7 @@
     width: 100%;
     border-radius: 50%;
     border: 1px solid black;
-    background-color: cadetblue;
+    background-color: #B0C4DE;
 }
 
 .circleRed{
@@ -55,17 +66,19 @@
     background-color: white;
     justify-content: center;
     align-items: center;
+    font-size: 2em;
+}
+
+.button:hover{
+    background-color: #55DD33;
 }
 
 .buttonNull{
-    display: flex;
-    height: 100%;
-    width: 100%;
-    border-radius: 50%;
-    border: 1px solid black;
     background-color: rgba(120,120,120, 0.4);
-    justify-content: center;
-    align-items: center;
+}
+
+.buttonNull:hover{
+    background-color: rgba(120,120,120, 0.4);
 }
 /* .wrapper {
     border: 49px solid #462921;

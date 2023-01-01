@@ -1,6 +1,6 @@
 import axios from 'axios'
 import {useState, useEffect} from 'react'
-
+import Header from './components/Header.js'
 import Add from './components/Add.js'
 import Select from './components/SelectGame'
 import Board from './components/Player1_Board'
@@ -13,6 +13,7 @@ import IndexCSS from './index.module.css';
 const App = () => {
 
   let [games, setGames] = useState([])
+  let [showAdd, setAdd] = useState(false)
 
   //=========================================================================
   //DELETE GAME
@@ -55,9 +56,11 @@ const App = () => {
 
   return (
     <>
-    <h1>Connect4</h1>
+    <Header setAdd={setAdd}/>
       <div key={games.id}>
-        <Add handleCreate={handleCreate}/>
+        {
+          showAdd === true ? <Add handleCreate={handleCreate} setAdd={setAdd}/> : null
+        }
         <Select games={games}/>
         {games.map((game) => {
         return (

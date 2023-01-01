@@ -1,4 +1,4 @@
-import {useState, UseEffect} from 'react'
+import {useState} from 'react'
 
 const Add = (props) => {
     let emptyGame = { game_name: '', username1: '', username2: ''}
@@ -28,8 +28,9 @@ const Add = (props) => {
           <label htmlFor="type">Player 2 Username: </label>
           <input type="text" value={game.username2} name="username2"  onChange={handleChange} />
           <br /><br />
-          <input type="submit" />
+          <input type="submit" onClick={()=>{props.setAdd(false)}}/>
       </form>
+      <button onClick={()=>{props.setAdd(false)}}>Cancel</button>
       </>
     )
 }

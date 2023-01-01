@@ -4,15 +4,7 @@ import BoardCSS from '../board.module.css';
 const Board = (props) => {
 
     let [game, setGame] = useState({...props.game})
-    //================================================================
-    // button handle class
-    const buttonHandle = (value) =>{
-        if (value === true){
-            return `${BoardCSS.button}`
-        } else if (value === false){
-            return `${BoardCSS.buttonNull}`
-        }
-    }
+
     //================================================================
     //change color based on user choice
     const classHandle = (value) =>{
@@ -24,7 +16,6 @@ const Board = (props) => {
             return `${BoardCSS.circleYellow}`
         }
     }
-
     //================================================================
     //pass in props handle function for update
     const handleSubmit = () => {
@@ -105,7 +96,7 @@ const Board = (props) => {
         } 
     }
     //================================================================
-    //pass in handle function to edit column 3
+    //pass in handle function to edit column 4
     const handleColumn4 = () =>{
         if(game.f4 === 0){
             setGame({ ...game, f4: 1, user1_turn: false, user2_turn: true});
@@ -127,6 +118,8 @@ const Board = (props) => {
             return;
         } 
     }
+    //================================================================
+    //pass in handle function to edit column 5
     const handleColumn5 = () =>{
         if(game.f5 === 0){
             setGame({ ...game, f5: 1, user1_turn: false, user2_turn: true});
@@ -148,6 +141,8 @@ const Board = (props) => {
             return;
         } 
     }
+    //================================================================
+    //pass in handle function to edit column 6
     const handleColumn6 = () =>{
         if(game.f6 === 0){
             setGame({ ...game, f6: 1, user1_turn: false, user2_turn: true});
@@ -169,6 +164,8 @@ const Board = (props) => {
             return;
         } 
     }
+    //================================================================
+    //pass in handle function to edit column 7
     const handleColumn7 = () =>{
         if(game.f7 === 0){
             setGame({ ...game, f7: 1, user1_turn: false, user2_turn: true});
@@ -191,15 +188,17 @@ const Board = (props) => {
         } 
     }
 
+    // use effect to submit after state change
     useEffect(() => {
         handleSubmit();
         classHandle();
       }, [game]);
 
+    //   display on page
         return (
         <>
-        <div key={game.id}>
-            <div>
+        <div className={BoardCSS.container} key={game.id}>
+            <div className={BoardCSS.message}>
             {
                 game.user1_turn === true ? <h1>Select Option Below</h1>: <h1>Opponent Turn</h1>
             }
@@ -208,203 +207,56 @@ const Board = (props) => {
                 <button onClick={() => {handleSubmitDelete(game)}}>Delete Game</button>
             </div>
         <div className={BoardCSS.boardContainer}>
-            <div>
-                <button className={`${buttonHandle(game.user1_turn)}`} onClick={ () => {if(game.user1_turn === true){handleColumn1(game)}}}> 1
-                </button>
-            </div>
-            <div>
-                <button className={`${buttonHandle(game.user1_turn)}`} onClick={ () => {if(game.user1_turn === true){handleColumn2(game)}}}> 2
-                </button>
-            </div>
-            <div>
-                <button className={`${buttonHandle(game.user1_turn)}`} onClick={ () => {if(game.user1_turn === true){handleColumn3(game)}}}> 3
-                </button>
-            </div>
-            <div>
-                <button className={`${buttonHandle(game.user1_turn)}`} onClick={ () => {if(game.user1_turn === true){handleColumn4(game)}}}> 4
-                </button>
-            </div>
-            <div>
-            <button className={`${buttonHandle(game.user1_turn)}`} onClick={ () => {if(game.user1_turn === true){handleColumn5(game)}}}> 5
-                </button>
-            </div>
-            <div>
-                <button className={`${buttonHandle(game.user1_turn)}`} onClick={ () => {if(game.user1_turn === true){handleColumn6(game)}}}> 6
-                </button>
-            </div>
-            <div>
-                <button className={`${buttonHandle(game.user1_turn)}`} onClick={ () => {if(game.user1_turn === true){handleColumn7(game)}}}> 7
-                </button>
-            </div>
+            <button className={`${BoardCSS.button} ${game.user1_turn === false? BoardCSS.buttonNull : null }`} onClick={ () => {if(game.user1_turn === true){handleColumn1(game)}}}> &#8659; </button>
+            <button className={`${BoardCSS.button} ${game.user1_turn === false? BoardCSS.buttonNull : null }`} onClick={ () => {if(game.user1_turn === true){handleColumn2(game)}}}> &#8659; </button>
+            <button className={`${BoardCSS.button} ${game.user1_turn === false? BoardCSS.buttonNull : null }`} onClick={ () => {if(game.user1_turn === true){handleColumn3(game)}}}> &#8659; </button>
+            <button className={`${BoardCSS.button} ${game.user1_turn === false? BoardCSS.buttonNull : null }`} onClick={ () => {if(game.user1_turn === true){handleColumn4(game)}}}> &#8659; </button>
+            <button className={`${BoardCSS.button} ${game.user1_turn === false? BoardCSS.buttonNull : null }`} onClick={ () => {if(game.user1_turn === true){handleColumn5(game)}}}> &#8659; </button>
+            <button className={`${BoardCSS.button} ${game.user1_turn === false? BoardCSS.buttonNull : null }`} onClick={ () => {if(game.user1_turn === true){handleColumn6(game)}}}> &#8659; </button>
+            <button className={`${BoardCSS.button} ${game.user1_turn === false? BoardCSS.buttonNull : null }`} onClick={ () => {if(game.user1_turn === true){handleColumn7(game)}}}> &#8659; </button>
             {/* start of connect4 board */}
-            <div>
-                <div id = "a1" className={`${classHandle(game.a1)}`} name="a1">
-                </div>
-            </div>
-            <div>
-                <div id = "a2" className={`${classHandle(game.a2)}`} name="a2">
-                </div>
-            </div>
-            <div className={BoardCSS.a3}>
-                <div id = "a3" className={`${classHandle(game.a3)}`} name="a3">
-                </div>
-            </div>
-            <div>
-                <div id = "a4" className={`${classHandle(game.a4)}`} name="a4">
-                </div>
-            </div>
-            <div>
-                <div id = "a5" className={`${classHandle(game.a5)}`} name="a5">
-                </div>
-            </div>
-            <div>
-                <div id = "a6" className={`${classHandle(game.a6)}`} name="a6">
-                </div>
-            </div>
-            <div>
-                <div id = "a7" className={`${classHandle(game.a7)}`} name="a7">
-                </div>
-            </div>
-            <div>
-                <div id = "b1" className={`${classHandle(game.b1)}`} name="b1">
-                </div>
-            </div>
-            <div>
-                <div id = "b2" className={`${classHandle(game.b2)}`} name="b2">
-                </div>
-            </div>
-            <div>
-                <div id = "b3" className={`${classHandle(game.b3)}`} name="b3">
-                </div>
-            </div>
-            <div>
-                <div id = "b4" className={`${classHandle(game.b4)}`} name="b4">
-                </div>
-            </div>
-            <div>
-                <div id = "b5" className={`${classHandle(game.b5)}`} name="b5">
-                </div>
-            </div>
-            <div>
-                <div id = "b6" className={`${classHandle(game.b6)}`} name="b6">
-                </div>
-            </div>
-            <div>
-                <div id = "b7" className={`${classHandle(game.b7)}`} name="b7">
-                </div>
-            </div>
-            <div>
-                <div id = "c1" className={`${classHandle(game.c1)}`} name="c1">
-                </div>
-            </div>
-            <div>
-                <div id = "c2" className={`${classHandle(game.c2)}`} name="c2">
-                </div>
-            </div>
-            <div>
-                <div id = "c3" className={`${classHandle(game.c3)}`} name="c3">
-                </div>
-            </div>
-            <div>
-                <div id = "c4" className={`${classHandle(game.c4)}`} name="c4">
-                </div>
-            </div>
-            <div>
-                <div id = "c5" className={`${classHandle(game.c5)}`} name="c5">
-                </div>
-            </div>
-            <div>
-                <div id = "c6" className={`${classHandle(game.c6)}`} name="c6">
-                </div>
-            </div>
-            <div>
-                <div id = "c7" className={`${classHandle(game.c7)}`} name="c7">
-                </div>
-            </div>
-            <div>
-                <div id = "d1" className={`${classHandle(game.d1)}`} name="d1">
-                </div>
-            </div>
-            <div>
-                <div id = "d2" className={`${classHandle(game.d2)}`} name="d2">
-                </div>
-            </div>
-            <div>
-                <div id = "d3" className={`${classHandle(game.d3)}`} name="d3">
-                </div>
-            </div>
-            <div>
-                <div id = "d4" className={`${classHandle(game.d4)}`} name="d4">
-                </div>
-            </div>
-            <div>
-                <div id = "d5" className={`${classHandle(game.d5)}`} name="d5">
-                </div>
-            </div>
-            <div>
-                <div id = "d6" className={`${classHandle(game.d6)}`} name="d6">
-                </div>
-            </div>
-            <div>
-                <div id = "d7" className={`${classHandle(game.d7)}`} name="d7">
-                </div>
-            </div>
-            <div>
-                <div id = "e1" className={`${classHandle(game.e1)}`} name="e1">
-                </div>
-            </div>
-            <div>
-                <div id = "e2" className={`${classHandle(game.e2)}`} name="e2">
-                </div>
-            </div>
-            <div>
-                <div id = "e3" className={`${classHandle(game.e3)}`} name="e3">
-                </div>
-            </div>
-            <div>
-                <div id = "e4" className={`${classHandle(game.e4)}`} name="e4">
-                </div>
-            </div>
-            <div>
-                <div id = "e5" className={`${classHandle(game.e5)}`} name="e5">
-                </div>
-            </div>
-            <div>
-                <div id = "e6" className={`${classHandle(game.e6)}`} name="e6">
-                </div>
-            </div>
-            <div>
-                <div id = "e7" className={`${classHandle(game.e7)}`} name="e7">
-                </div>
-            </div>
-            <div>
-                <div id = "f1" className={`${classHandle(game.f1)}`} name="f1">
-                </div>
-            </div>
-            <div>
-                <div id = "f2" className={`${classHandle(game.f2)}`} name="f2">
-                </div>
-            </div>
-            <div>
-                <div id = "f3" className={`${classHandle(game.f3)}`} name="f3">
-                </div>
-            </div>
-            <div>
-                <div id = "f4" className={`${classHandle(game.f4)}`} name="f4">
-                </div>
-            </div>
-            <div>
-                <div id = "f5" className={`${classHandle(game.f5)}`} name="f5">
-                </div>
-            </div>
-            <div>
-                <div id = "f6" className={`${classHandle(game.f6)}`} name="f6">
-                </div>
-            </div>
-            <div>
-                <div id = "f7" className={`${classHandle(game.f7)}`} name="f7">
-                </div>
-            </div>
+            <div id = "a1" className={`${classHandle(game.a1)}`} name="a1"/>    
+            <div id = "a2" className={`${classHandle(game.a2)}`} name="a2"/>   
+            <div id = "a3" className={`${classHandle(game.a3)}`} name="a3"/>
+            <div id = "a4" className={`${classHandle(game.a4)}`} name="a4"/>
+            <div id = "a5" className={`${classHandle(game.a5)}`} name="a5"/>    
+            <div id = "a6" className={`${classHandle(game.a6)}`} name="a6"/>
+            <div id = "a7" className={`${classHandle(game.a7)}`} name="a7"/>
+            <div id = "b1" className={`${classHandle(game.b1)}`} name="b1"/>
+            <div id = "b2" className={`${classHandle(game.b2)}`} name="b2"/>
+            <div id = "b3" className={`${classHandle(game.b3)}`} name="b3"/>
+            <div id = "b4" className={`${classHandle(game.b4)}`} name="b4"/>
+            <div id = "b5" className={`${classHandle(game.b5)}`} name="b5"/>
+            <div id = "b6" className={`${classHandle(game.b6)}`} name="b6"/>
+            <div id = "b7" className={`${classHandle(game.b7)}`} name="b7"/>
+            <div id = "c1" className={`${classHandle(game.c1)}`} name="c1"/>
+            <div id = "c2" className={`${classHandle(game.c2)}`} name="c2"/>
+            <div id = "c3" className={`${classHandle(game.c3)}`} name="c3"/>
+            <div id = "c4" className={`${classHandle(game.c4)}`} name="c4"/>
+            <div id = "c5" className={`${classHandle(game.c5)}`} name="c5"/>
+            <div id = "c6" className={`${classHandle(game.c6)}`} name="c6"/>
+            <div id = "c7" className={`${classHandle(game.c7)}`} name="c7"/>
+            <div id = "d1" className={`${classHandle(game.d1)}`} name="d1"/>
+            <div id = "d2" className={`${classHandle(game.d2)}`} name="d2"/>
+            <div id = "d3" className={`${classHandle(game.d3)}`} name="d3"/>
+            <div id = "d4" className={`${classHandle(game.d4)}`} name="d4"/>
+            <div id = "d5" className={`${classHandle(game.d5)}`} name="d5"/>
+            <div id = "d6" className={`${classHandle(game.d6)}`} name="d6"/>
+            <div id = "d7" className={`${classHandle(game.d7)}`} name="d7"/>
+            <div id = "e1" className={`${classHandle(game.e1)}`} name="e1"/>
+            <div id = "e2" className={`${classHandle(game.e2)}`} name="e2"/>
+            <div id = "e3" className={`${classHandle(game.e3)}`} name="e3"/>
+            <div id = "e4" className={`${classHandle(game.e4)}`} name="e4"/>
+            <div id = "e5" className={`${classHandle(game.e5)}`} name="e5"/>
+            <div id = "e6" className={`${classHandle(game.e6)}`} name="e6"/>
+            <div id = "e7" className={`${classHandle(game.e7)}`} name="e7"/>
+            <div id = "f1" className={`${classHandle(game.f1)}`} name="f1"/>
+            <div id = "f2" className={`${classHandle(game.f2)}`} name="f2"/>
+            <div id = "f3" className={`${classHandle(game.f3)}`} name="f3"/>
+            <div id = "f4" className={`${classHandle(game.f4)}`} name="f4"/>
+            <div id = "f5" className={`${classHandle(game.f5)}`} name="f5"/>
+            <div id = "f6" className={`${classHandle(game.f6)}`} name="f6"/>
+            <div id = "f7" className={`${classHandle(game.f7)}`} name="f7"/>
         </div>
         </div>
         </>
