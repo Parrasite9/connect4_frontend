@@ -4,7 +4,26 @@ import BoardCSS from '../board.module.css';
 const Board = (props) => {
 
     let [game, setGame] = useState({...props.game})
-
+    //================================================================
+    // button handle class
+    const buttonHandle = (value) =>{
+        if (value === true){
+            return `${BoardCSS.button}`
+        } else if (value === false){
+            return `${BoardCSS.buttonNull}`
+        }
+    }
+    //================================================================
+    //change color based on user choice
+    const classHandle = (value) =>{
+        if (value === 0){
+            return `${BoardCSS.circle}`
+        } else if (value === 1){
+            return `${BoardCSS.circleRed}`
+        } else if (value === 2){
+            return `${BoardCSS.circleYellow}`
+        }
+    }
 
     //================================================================
     //pass in props handle function for update
@@ -173,7 +192,8 @@ const Board = (props) => {
     }
 
     useEffect(() => {
-        handleSubmit()
+        handleSubmit();
+        classHandle();
       }, [game]);
 
         return (
@@ -181,207 +201,208 @@ const Board = (props) => {
         <div key={game.id}>
             <div>
             {
-                game.user1_turn === true ? <h1>Select Option Below</h1>: <h1>Player 2 Turn</h1>
+                game.user1_turn === true ? <h1>Select Option Below</h1>: <h1>Opponent Turn</h1>
             }
             </div>
             <div>
                 <button onClick={() => {handleSubmitDelete(game)}}>Delete Game</button>
             </div>
         <div className={BoardCSS.boardContainer}>
-            <div className={BoardCSS.z1}>
-                <button className={`${BoardCSS.circle_z1} ${BoardCSS.button}`} data-value={game.z1} onClick={ () => { handleColumn1(game)}}> 1
+            <div>
+                <button className={`${buttonHandle(game.user1_turn)}`} onClick={ () => {if(game.user1_turn === true){handleColumn1(game)}}}> 1
                 </button>
             </div>
-            <div className={BoardCSS.z2}>
-            <button className={`${BoardCSS.circle_z2} ${BoardCSS.button}`} data-value={game.z2} onClick={ () => {handleColumn2(game)}}> 2
+            <div>
+                <button className={`${buttonHandle(game.user1_turn)}`} onClick={ () => {if(game.user1_turn === true){handleColumn2(game)}}}> 2
                 </button>
             </div>
-            <div className={BoardCSS.z3}>
-            <button className={`${BoardCSS.circle_z3} ${BoardCSS.button}`} onClick={ () => {handleColumn3(game)}}> 3
+            <div>
+                <button className={`${buttonHandle(game.user1_turn)}`} onClick={ () => {if(game.user1_turn === true){handleColumn3(game)}}}> 3
                 </button>
             </div>
-            <div className={BoardCSS.z4}>
-            <button className={`${BoardCSS.circle_z4} ${BoardCSS.button}`} onClick={ () => {handleColumn4(game)}}> 4
+            <div>
+                <button className={`${buttonHandle(game.user1_turn)}`} onClick={ () => {if(game.user1_turn === true){handleColumn4(game)}}}> 4
                 </button>
             </div>
-            <div className={BoardCSS.z5}>
-            <button className={`${BoardCSS.circle_z5} ${BoardCSS.button}`} onClick={ () => {handleColumn5(game)}}> 5
+            <div>
+            <button className={`${buttonHandle(game.user1_turn)}`} onClick={ () => {if(game.user1_turn === true){handleColumn5(game)}}}> 5
                 </button>
             </div>
-            <div className={BoardCSS.z6}>
-            <button className={`${BoardCSS.circle_z6} ${BoardCSS.button}`} onClick={ () => {handleColumn6(game)}}> 6
+            <div>
+                <button className={`${buttonHandle(game.user1_turn)}`} onClick={ () => {if(game.user1_turn === true){handleColumn6(game)}}}> 6
                 </button>
             </div>
-            <div className={BoardCSS.z7}>
-            <button className={`${BoardCSS.circle_z7} ${BoardCSS.button}`} onClick={ () => {handleColumn7(game)}}> 7
+            <div>
+                <button className={`${buttonHandle(game.user1_turn)}`} onClick={ () => {if(game.user1_turn === true){handleColumn7(game)}}}> 7
                 </button>
             </div>
-            <div className={BoardCSS.a1}>
-                <div id = "a1" className={`${BoardCSS.circle_a1} ${BoardCSS.circle}`} name="a1" data-value={game.a1}>
+            {/* start of connect4 board */}
+            <div>
+                <div id = "a1" className={`${classHandle(game.a1)}`} name="a1">
                 </div>
             </div>
-            <div className={BoardCSS.a2}>
-                <div id = "a2" className={`${BoardCSS.circle_a2} ${BoardCSS.circle}`} name="a2" data-value={game.a2}>
+            <div>
+                <div id = "a2" className={`${classHandle(game.a2)}`} name="a2">
                 </div>
             </div>
             <div className={BoardCSS.a3}>
-                <div id = "a3" className={`${BoardCSS.circle_a3} ${BoardCSS.circle}`} name="a3" data-value={game.a3}>
+                <div id = "a3" className={`${classHandle(game.a3)}`} name="a3">
                 </div>
             </div>
-            <div className={BoardCSS.a4}>
-                <div id = "a4" className={`${BoardCSS.circle_a4} ${BoardCSS.circle}`} name="a4" data-value={game.a4}>
+            <div>
+                <div id = "a4" className={`${classHandle(game.a4)}`} name="a4">
                 </div>
             </div>
-            <div className={BoardCSS.a5}>
-                <div id = "a5" className={`${BoardCSS.circle_a5} ${BoardCSS.circle}`} name="a5" data-value={game.a5}>
+            <div>
+                <div id = "a5" className={`${classHandle(game.a5)}`} name="a5">
                 </div>
             </div>
-            <div className={BoardCSS.a6}>
-                <div id = "a6" className={`${BoardCSS.circle_a6} ${BoardCSS.circle}`} name="a6" data-value={game.a6}>
+            <div>
+                <div id = "a6" className={`${classHandle(game.a6)}`} name="a6">
                 </div>
             </div>
-            <div className={BoardCSS.a7}>
-                <div id = "a7" className={`${BoardCSS.circle_a7} ${BoardCSS.circle}`} name="a7" data-value={game.a7}>
+            <div>
+                <div id = "a7" className={`${classHandle(game.a7)}`} name="a7">
                 </div>
             </div>
-            <div className={BoardCSS.b1}>
-                <div id = "b1" className={`${BoardCSS.circle_b1} ${BoardCSS.circle}`} name="b1" data-value={game.b1}>
+            <div>
+                <div id = "b1" className={`${classHandle(game.b1)}`} name="b1">
                 </div>
             </div>
-            <div className={BoardCSS.b2}>
-                <div id = "b2" className={`${BoardCSS.circle_b2} ${BoardCSS.circle}`} name="b2" data-value={game.b2}>
+            <div>
+                <div id = "b2" className={`${classHandle(game.b2)}`} name="b2">
                 </div>
             </div>
-            <div className={BoardCSS.b3}>
-                <div id = "b3" className={`${BoardCSS.circle_b3} ${BoardCSS.circle}`} name="b3" data-value={game.b3}>
+            <div>
+                <div id = "b3" className={`${classHandle(game.b3)}`} name="b3">
                 </div>
             </div>
-            <div className={BoardCSS.b4}>
-                <div id = "b4" className={`${BoardCSS.circle_b4} ${BoardCSS.circle}`} name="b4" data-value={game.b4}>
+            <div>
+                <div id = "b4" className={`${classHandle(game.b4)}`} name="b4">
                 </div>
             </div>
-            <div className={BoardCSS.b5}>
-                <div id = "b5" className={`${BoardCSS.circle_b5} ${BoardCSS.circle}`} name="b5" data-value={game.b5}>
+            <div>
+                <div id = "b5" className={`${classHandle(game.b5)}`} name="b5">
                 </div>
             </div>
-            <div className={BoardCSS.b6}>
-                <div id = "b6" className={`${BoardCSS.circle_b6} ${BoardCSS.circle}`} name="b6" data-value={game.b6}>
+            <div>
+                <div id = "b6" className={`${classHandle(game.b6)}`} name="b6">
                 </div>
             </div>
-            <div className={BoardCSS.b7}>
-                <div id = "b7" className={`${BoardCSS.circle_b7} ${BoardCSS.circle}`} name="b7" data-value={game.b7}>
+            <div>
+                <div id = "b7" className={`${classHandle(game.b7)}`} name="b7">
                 </div>
             </div>
-            <div className={BoardCSS.c1}>
-                <div id = "c1" className={`${BoardCSS.circle_c1} ${BoardCSS.circle}`} name="c1" data-value={game.c1}>
+            <div>
+                <div id = "c1" className={`${classHandle(game.c1)}`} name="c1">
                 </div>
             </div>
-            <div className={BoardCSS.c2}>
-                <div id = "c2" className={`${BoardCSS.circle_c2} ${BoardCSS.circle}`} name="c2" data-value={game.c2}>
+            <div>
+                <div id = "c2" className={`${classHandle(game.c2)}`} name="c2">
                 </div>
             </div>
-            <div className={BoardCSS.c3}>
-                <div id = "c3" className={`${BoardCSS.circle_c3} ${BoardCSS.circle}`} name="c3" data-value={game.c3}>
+            <div>
+                <div id = "c3" className={`${classHandle(game.c3)}`} name="c3">
                 </div>
             </div>
-            <div className={BoardCSS.c4}>
-                <div id = "c4" className={`${BoardCSS.circle_c4} ${BoardCSS.circle}`} name="c4" data-value={game.c4}>
+            <div>
+                <div id = "c4" className={`${classHandle(game.c4)}`} name="c4">
                 </div>
             </div>
-            <div className={BoardCSS.c5}>
-                <div id = "c5" className={`${BoardCSS.circle_c5} ${BoardCSS.circle}`} name="c5" data-value={game.c5}>
+            <div>
+                <div id = "c5" className={`${classHandle(game.c5)}`} name="c5">
                 </div>
             </div>
-            <div className={BoardCSS.c6}>
-                <div id = "c6" className={`${BoardCSS.circle_c6} ${BoardCSS.circle}`} name="c6" data-value={game.c6}>
+            <div>
+                <div id = "c6" className={`${classHandle(game.c6)}`} name="c6">
                 </div>
             </div>
-            <div className={BoardCSS.c7}>
-                <div id = "c7" className={`${BoardCSS.circle_c7} ${BoardCSS.circle}`} name="c7" data-value={game.c7}>
+            <div>
+                <div id = "c7" className={`${classHandle(game.c7)}`} name="c7">
                 </div>
             </div>
-            <div className={BoardCSS.d1}>
-                <div id = "d1" className={`${BoardCSS.circle_d1} ${BoardCSS.circle}`} name="d1" data-value={game.d1}>
+            <div>
+                <div id = "d1" className={`${classHandle(game.d1)}`} name="d1">
                 </div>
             </div>
-            <div className={BoardCSS.d2}>
-                <div id = "d2" className={`${BoardCSS.circle_d2} ${BoardCSS.circle}`} name="d2" data-value={game.d2}>
+            <div>
+                <div id = "d2" className={`${classHandle(game.d2)}`} name="d2">
                 </div>
             </div>
-            <div className={BoardCSS.d3}>
-                <div id = "d3" className={`${BoardCSS.circle_d3} ${BoardCSS.circle}`} name="d3" data-value={game.d3}>
+            <div>
+                <div id = "d3" className={`${classHandle(game.d3)}`} name="d3">
                 </div>
             </div>
-            <div className={BoardCSS.d4}>
-                <div id = "d4" className={`${BoardCSS.circle_d4} ${BoardCSS.circle}`} name="d4" data-value={game.d4}>
+            <div>
+                <div id = "d4" className={`${classHandle(game.d4)}`} name="d4">
                 </div>
             </div>
-            <div className={BoardCSS.d5}>
-                <div id = "d5" className={`${BoardCSS.circle_d5} ${BoardCSS.circle}`} name="d5" data-value={game.d5}>
+            <div>
+                <div id = "d5" className={`${classHandle(game.d5)}`} name="d5">
                 </div>
             </div>
-            <div className={BoardCSS.d6}>
-                <div id = "d6" className={`${BoardCSS.circle_d6} ${BoardCSS.circle}`} name="d6" data-value={game.d6}>
+            <div>
+                <div id = "d6" className={`${classHandle(game.d6)}`} name="d6">
                 </div>
             </div>
-            <div className={BoardCSS.d7}>
-                <div id = "d7" className={`${BoardCSS.circle_d7} ${BoardCSS.circle}`} name="d7" data-value={game.d7}>
+            <div>
+                <div id = "d7" className={`${classHandle(game.d7)}`} name="d7">
                 </div>
             </div>
-            <div className={BoardCSS.e1}>
-                <div id = "e1" className={`${BoardCSS.circle_e1} ${BoardCSS.circle}`} name="e1" data-value={game.e1}>
+            <div>
+                <div id = "e1" className={`${classHandle(game.e1)}`} name="e1">
                 </div>
             </div>
-            <div className={BoardCSS.e2}>
-                <div id = "e2" className={`${BoardCSS.circle_e2} ${BoardCSS.circle}`} name="e2" data-value={game.e2}>
+            <div>
+                <div id = "e2" className={`${classHandle(game.e2)}`} name="e2">
                 </div>
             </div>
-            <div className={BoardCSS.e3}>
-                <div id = "e3" className={`${BoardCSS.circle_e3} ${BoardCSS.circle}`} name="e3" data-value={game.e3}>
+            <div>
+                <div id = "e3" className={`${classHandle(game.e3)}`} name="e3">
                 </div>
             </div>
-            <div className={BoardCSS.e4}>
-                <div id = "e4" className={`${BoardCSS.circle_e4} ${BoardCSS.circle}`} name="e4" data-value={game.e4}>
+            <div>
+                <div id = "e4" className={`${classHandle(game.e4)}`} name="e4">
                 </div>
             </div>
-            <div className={BoardCSS.e5}>
-                <div id = "e5" className={`${BoardCSS.circle_e5} ${BoardCSS.circle}`} name="e5" data-value={game.e5}>
+            <div>
+                <div id = "e5" className={`${classHandle(game.e5)}`} name="e5">
                 </div>
             </div>
-            <div className={BoardCSS.e6}>
-                <div id = "e6" className={`${BoardCSS.circle_e6} ${BoardCSS.circle}`} name="e6" data-value={game.e6}>
+            <div>
+                <div id = "e6" className={`${classHandle(game.e6)}`} name="e6">
                 </div>
             </div>
-            <div className={BoardCSS.e7}>
-                <div id = "e7" className={`${BoardCSS.circle_e7} ${BoardCSS.circle}`} name="e7" data-value={game.e7}>
+            <div>
+                <div id = "e7" className={`${classHandle(game.e7)}`} name="e7">
                 </div>
             </div>
-            <div className={BoardCSS.f1}>
-                <div id = "f1" className={`${BoardCSS.circle_f1} ${BoardCSS.circle}`} name="f1" data-value={game.f1}>
+            <div>
+                <div id = "f1" className={`${classHandle(game.f1)}`} name="f1">
                 </div>
             </div>
-            <div className={BoardCSS.f2}>
-                <div id = "f2" className={`${BoardCSS.circle_f2} ${BoardCSS.circle}`} name="f2" data-value={game.f2}>
+            <div>
+                <div id = "f2" className={`${classHandle(game.f2)}`} name="f2">
                 </div>
             </div>
-            <div className={BoardCSS.f3}>
-                <div id = "f3" className={`${BoardCSS.circle_f3} ${BoardCSS.circle}`} name="f3" data-value={game.f3}>
+            <div>
+                <div id = "f3" className={`${classHandle(game.f3)}`} name="f3">
                 </div>
             </div>
-            <div className={BoardCSS.f4}>
-                <div id = "f4" className={`${BoardCSS.circle_f4} ${BoardCSS.circle}`} name="f4" data-value={game.f4}>
+            <div>
+                <div id = "f4" className={`${classHandle(game.f4)}`} name="f4">
                 </div>
             </div>
-            <div className={BoardCSS.f5}>
-                <div id = "f5" className={`${BoardCSS.circle_f5} ${BoardCSS.circle}`} name="f5" data-value={game.f5}>
+            <div>
+                <div id = "f5" className={`${classHandle(game.f5)}`} name="f5">
                 </div>
             </div>
-            <div className={BoardCSS.f6}>
-                <div id = "f6" className={`${BoardCSS.circle_f6} ${BoardCSS.circle}`} name="f6" data-value={game.f6}>
+            <div>
+                <div id = "f6" className={`${classHandle(game.f6)}`} name="f6">
                 </div>
             </div>
-            <div className={BoardCSS.f7}>
-                <div id = "f7" className={`${BoardCSS.circle_f7} ${BoardCSS.circle}`} data-value={game.f7}>
+            <div>
+                <div id = "f7" className={`${classHandle(game.f7)}`} name="f7">
                 </div>
             </div>
         </div>

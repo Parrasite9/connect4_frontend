@@ -41,7 +41,7 @@ const App = () => {
  //collect from database
   const getGames = () => {
     axios.get('https://connect4back.herokuapp.com/api/connect4').then((response) => 
-    setGames(response.data)
+    setGames(response.data),
     // , (err) => 
     // console.log(err)
     )

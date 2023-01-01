@@ -11,8 +11,9 @@ const Add = (props) => {
     
   //   submit character with props handle
     const handleSubmit = (event) => {
-      event.preventDefault()
-      props.handleCreate(game)
+      event.preventDefault();
+      props.handleCreate(game);
+      setGame(emptyGame);
     }
   
     return (
