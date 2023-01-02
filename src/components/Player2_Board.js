@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react'
-import BoardCSS from '../board.module.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Button} from 'react-bootstrap';  
+import BoardCSS from '../board.module.css';
 
 const Board2 = (props) => {
 
@@ -230,9 +230,9 @@ const Board2 = (props) => {
                         <p>Opponent Color:  </p><div className={BoardCSS.P1legend}/>
                     </div>
                     {/* Buttons to manage game*/}
-                    <Button variant="danger" size="sm"  onClick={() => {handleSubmitDelete(game)}}>Delete Game</Button>
-                    <Button variant="warning" size="sm" onClick={() => {handleReset(game)}}>Reset Game/Change First Player</Button>
-                    <Button variant="success" size="sm" onClick={() => {handleWin(game)}}>Press to Win!</Button>
+                    <Button className={BoardCSS.deleteBtn} variant="danger" size="sm"  onClick={() => {handleSubmitDelete(game)}}>Delete Game</Button>
+                    <Button className={BoardCSS.resetBtn} variant="warning" size="sm" onClick={() => {handleReset(game)}}>Reset/Change Start Player</Button>
+                    <Button className={BoardCSS.winBtn} variant="success" size="sm" onClick={() => {handleWin(game)}}>Press to Win!</Button>
                 </div>
             </div>
         <div className={BoardCSS.boardContainer}>

@@ -107,3 +107,23 @@
     border-radius: 50%;
     border: 1px solid black;
 }
+
+.deleteBtn{
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    color: black;
+}
+.resetBtn{
+    border-radius: 0;
+}
+
+.resetBtn:hover{
+    border-radius: 0;
+    color: white;
+}
+
+.winBtn{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    color: black;
+}
