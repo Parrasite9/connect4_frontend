@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+
+.header{
+    max-width: 700px;
+    display: flex;
+    flex-direction: row;
+    grid-template-columns: auto auto auto auto;
+    justify-content: space-evenly;
+    text-align: center;
+    border: 2px solid black;
+    margin: 1em auto 1em auto;
+    border-radius: 5px;
+    font-family: 'Alfa Slab One', cursive;
+}
+
+.headerTitle{
+    flex-grow: 0.5;
+    padding: 5px 3px 0 3px;
+    font-size: 1.3rem;
+    border-right: 2px solid black;
+    background-color: #00a2f4;
+    color: yellow;
+}
+
+.headerCreate ,.headerSelect{
+    flex-grow: 1;
+    padding-top: 5px;
+    font-size: 1.3rem;
+    background-color: #e2e4d7;
+    border-right: 2px solid black;
+    text-decoration: none;
+    color: black;
+}
+
+.headerRules{
+    flex-grow: 1;
+    padding: 5px 3px 0 3px;
+    font-size: 1.3rem;
+    background-color: #e2e4d7;
+    text-decoration: none;
+    color: black;
+}
+
+.headerCreate:hover, .headerSelect:hover, .headerRules:hover{
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(226,228,215,1) 100%);
+    color: black;
+}
+
+.headerSelect:hover{
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(226,228,215,1) 100%);
+}
+
+@media only screen and (max-width: 600px) {
+    .headerTitle, .headerCreate ,.headerSelect, .headerRules{
+        font-size: 0.8rem;
+    }
+}
