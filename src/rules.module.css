@@ -1,0 +1,12 @@
+.rulesContainer{
+    display: flex;
+    background-color: rgba(255,255,255,0.7);
+    border: 1px solid black;
+    text-align: center;
+    flex-direction: column;
+    margin: 1em auto 1em auto;
+    border-radius: 5px;
+    white-space: pre-wrap;
+    padding: 10px;
+    max-width: 700px;
+}
