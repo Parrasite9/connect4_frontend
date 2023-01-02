@@ -24,13 +24,13 @@ const Add = (props) => {
       <div className={AddCSS.formContainer}>
         <div className={AddCSS.form}>
         <Form onSubmit={handleSubmit} >
-          <Form.Label htmlFor="name">Game Name: </Form.Label>
+          <Form.Label htmlFor="name"><b>Game Name: </b></Form.Label>
           <Form.Control type="text" value={game.game_name} name="game_name" onChange={handleChange} />
           <br /><br />
-          <Form.Label htmlFor="players">Player 1 Username: </Form.Label>
+          <Form.Label htmlFor="players"><b>Player 1 Username: </b></Form.Label>
           <Form.Control type="text" value={game.username1} name="username1"  onChange={handleChange} />
           <br /><br />
-          <Form.Label htmlFor="type">Player 2 Username: </Form.Label>
+          <Form.Label htmlFor="type"><b>Player 2 Username: </b></Form.Label>
           <Form.Control type="text" value={game.username2} name="username2"  onChange={handleChange} />
           <div  className={AddCSS.submit}>
             <Button variant="success" type="submit">Submit</Button>

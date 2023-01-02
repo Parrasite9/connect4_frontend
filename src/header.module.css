@@ -1,18 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
 
 .header{
-    width: 97%;
-    display: inline-grid;
+    max-width: 700px;
+    display: flex;
+    flex-direction: row;
     grid-template-columns: auto auto auto auto;
+    justify-content: space-evenly;
     text-align: center;
     border: 2px solid black;
-    margin: 1em;
+    margin: 1em auto 1em auto;
     border-radius: 5px;
     font-family: 'Alfa Slab One', cursive;
 }
 
 .headerTitle{
-    padding-top: 5px;
+    flex-grow: 0.5;
+    padding: 5px 3px 0 3px;
     font-size: 1.3rem;
     border-right: 2px solid black;
     background-color: #00a2f4;
@@ -20,6 +23,7 @@
 }
 
 .headerCreate ,.headerSelect{
+    flex-grow: 1;
     padding-top: 5px;
     font-size: 1.3rem;
     background-color: #e2e4d7;
@@ -29,7 +33,8 @@
 }
 
 .headerRules{
-    padding-top: 5px;
+    flex-grow: 1;
+    padding: 5px 3px 0 3px;
     font-size: 1.3rem;
     background-color: #e2e4d7;
     text-decoration: none;

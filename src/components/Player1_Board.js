@@ -8,7 +8,7 @@ const Board1 = (props) => {
     let [game, setGame] = useState({...props.game1})
 
     //================================================================
-    //change color based on user choice
+    //change board color based on user choice
     const classHandle = (value) =>{
         if (value === 0){
             return `${BoardCSS.circle}`
@@ -29,7 +29,17 @@ const Board1 = (props) => {
         props.handleDelete(event);
     }
     //================================================================
-    //pass in handle function to edit column 1
+    //Reset Game, change first player. Only works on current user turn!
+    const handleReset = (game) =>{
+        setGame({ ...game, winner: false, user1_turn: false, user2_turn: true, a1: 0, a2: 0, a3: 0, a4: 0, a5: 0, a6: 0, a7:0, b1: 0, b2: 0, b3: 0, b4: 0, b5: 0, b6: 0, b7:0, c1: 0, c2: 0, c3: 0, c4: 0, c5: 0, c6: 0, c7:0, d1: 0, d2: 0, d3: 0, d4: 0, d5: 0, d6: 0, d7:0, e1: 0, e2: 0, e3: 0, e4: 0, e5: 0, e6: 0, e7:0, f1: 0, f2: 0, f3: 0, f4: 0, f5: 0, f6: 0, f7:0})
+    }
+    //================================================================
+    //Change winn game state
+    const handleWin = (game) => {
+        setGame({...game, winner: true})
+    }
+    //================================================================
+    //pass in handle function to edit column 1, change value in column, and change player
     const handleColumn1 = (game) =>{
         if(game.f1 === 0){
             setGame({ ...game, f1: 1, user1_turn: false, user2_turn: true})
@@ -52,7 +62,7 @@ const Board1 = (props) => {
         } 
     }
     //================================================================
-    //pass in handle function to edit column 2
+    //pass in handle function to edit column 2, change value in column, and change player
     const handleColumn2 = () =>{
         if(game.f2 === 0){
             setGame({ ...game, f2: 1, user1_turn: false, user2_turn: true});
@@ -75,7 +85,7 @@ const Board1 = (props) => {
         } 
     }
     //================================================================
-    //pass in handle function to edit column 3
+    //pass in handle function to edit column 3, change value in column, and change player
     const handleColumn3 = () =>{
         if(game.f3 === 0){
             setGame({ ...game, f3: 1, user1_turn: false, user2_turn: true});
@@ -98,7 +108,7 @@ const Board1 = (props) => {
         } 
     }
     //================================================================
-    //pass in handle function to edit column 4
+    //pass in handle function to edit column 4, change value in column, and change player
     const handleColumn4 = () =>{
         if(game.f4 === 0){
             setGame({ ...game, f4: 1, user1_turn: false, user2_turn: true});
@@ -121,7 +131,7 @@ const Board1 = (props) => {
         } 
     }
     //================================================================
-    //pass in handle function to edit column 5
+    //pass in handle function to edit column 5, change value in column, and change player
     const handleColumn5 = () =>{
         if(game.f5 === 0){
             setGame({ ...game, f5: 1, user1_turn: false, user2_turn: true});
@@ -144,7 +154,7 @@ const Board1 = (props) => {
         } 
     }
     //================================================================
-    //pass in handle function to edit column 6
+    //pass in handle function to edit column 6, change value in column, and change player
     const handleColumn6 = () =>{
         if(game.f6 === 0){
             setGame({ ...game, f6: 1, user1_turn: false, user2_turn: true});
@@ -167,7 +177,7 @@ const Board1 = (props) => {
         } 
     }
     //================================================================
-    //pass in handle function to edit column 7
+    //pass in handle function to edit column 7, change value in column, and change player
     const handleColumn7 = () =>{
         if(game.f7 === 0){
             setGame({ ...game, f7: 1, user1_turn: false, user2_turn: true});
@@ -189,32 +199,43 @@ const Board1 = (props) => {
             return;
         } 
     }
-
-    // use effect to submit after state change
+    //================================================================
+    // use effect to submit after state change. Must be seperate from other "useeffect"
     useEffect(() => {
         handleSubmit(game);
       }, [game]);
-
+    //================================================================
+    // use effect will populate state change ater changes made on Player2 page
       useEffect(() => {
         setGame(props.game1);
-      }, [props.game1.user1_turn, props.game1.user2_turn]);
-
+      }, [props.game1.user1_turn, props.game1.user2_turn, props.game1.winner]);
+     //================================================================
     //   display on page
         return (
         <>
         <div className={BoardCSS.container} key={game.id}>
+            {/* display message saying whose turn it is */}
             <div className={BoardCSS.message}>
-            {
-                game.user1_turn === true ? <h1>Select Option Below</h1>: <h1>Opponent Turn</h1>
-            }
-            </div>
-            <div>
-                <div className={BoardCSS.legend}>
-                    <p>Your Color:  </p><div className={BoardCSS.P1legend}/>
-                    <p>Opponent Color:  </p><div className={BoardCSS.P2legend}/>
+                {
+                    game.user1_turn === true ? <h3>Select Option Below</h3>: <h3>Opponent Turn</h3>
+                }
+                {
+                    game.winner === true ? <h1>There has been a Winner!</h1>: null
+                }
+                
+                <div>
+                    {/* display game legend */}
+                    <div className={BoardCSS.legend}>
+                        <p>Your Color:  </p><div className={BoardCSS.P1legend}/>
+                        <p>Opponent Color:  </p><div className={BoardCSS.P2legend}/>
+                    </div>
+                    {/* Buttons to manage game*/}
+                    <Button variant="danger" size="sm"  onClick={() => {handleSubmitDelete(game)}}>Delete Game</Button>
+                    <Button variant="warning" size="sm" onClick={() => {handleReset(game)}}>Reset Game/Change First Player</Button>
+                    <Button variant="success" size="sm" onClick={() => {handleWin(game)}}>Press to Win!</Button>
                 </div>
-                <Button variant="outline-danger" onClick={() => {handleSubmitDelete(game)}}>Delete Game</Button>
             </div>
+            {/* buttons to change state of game in each column of connect4g game */}
         <div className={BoardCSS.boardContainer}>
             <button className={`${BoardCSS.button} ${game.user1_turn === false? BoardCSS.buttonNull : null }`} onClick={ () => {if(game.user1_turn === true){handleColumn1(game)}}}> &#8659; </button>
             <button className={`${BoardCSS.button} ${game.user1_turn === false? BoardCSS.buttonNull : null }`} onClick={ () => {if(game.user1_turn === true){handleColumn2(game)}}}> &#8659; </button>
@@ -271,5 +292,6 @@ const Board1 = (props) => {
         </>
       )
   }
-  
+//==========================================================================
+//   export to App.js
   export default Board1

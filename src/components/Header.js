@@ -5,7 +5,7 @@ const Header = (props) => {
 
   
     return (
-    <header className={HeaderCSS.header}>
+    <div className={HeaderCSS.header}>
         <div className={HeaderCSS.headerTitle}>
             <p>Connect4</p>
         </div>
@@ -22,7 +22,7 @@ const Header = (props) => {
             <p>Rules</p>
         </div>
         </a>
-    </header>
+    </div>
     )
 }
 

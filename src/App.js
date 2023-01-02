@@ -3,7 +3,7 @@ import {useState, useEffect} from 'react'
 import Header from './components/Header.js'
 import Add from './components/Add.js'
 import Rules from './components/Rules.js'
-import Select from './components/SelectGame'
+// import Select from './components/SelectGame'
 import Board1 from './components/Player1_Board'
 import Board2 from './components/Player2_Board'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -58,7 +58,7 @@ const App = () => {
 
 
   return (
-    <>
+    <div className={IndexCSS.appContainer}>
     <Header setAdd={setAdd} setRules={setRules}/>
       <div key={games.id}>
         {
@@ -67,7 +67,7 @@ const App = () => {
         {
           showAdd === true ? <Add handleCreate={handleCreate} setAdd={setAdd}/> : null
         }
-        <Select games={games}/>
+        {/* <Select games={games}/> */}
         {games.map((game) => {
         return (
           <div key={game.id}>
@@ -76,7 +76,7 @@ const App = () => {
           </div>
         )})}
       </div>
-    </>
+    </div>
   )
 }
 

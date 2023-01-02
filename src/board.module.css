@@ -6,6 +6,14 @@
     text-align: center;
 }
 
+.message{
+    background-color: rgba(255,255,255,0.7);
+    padding: 5px 0 5px 0;
+    max-width: 700px;
+    margin: auto;
+    border: 1px solid black;
+    border-radius: 5px;
+}
 
 .boardContainer{
     padding: 1em 0 1em 0;
@@ -89,6 +97,7 @@
     width:25px;
     background-color: red;
     border-radius: 50%;
+    border: 1px solid black;
 }
 
 .P2legend{
@@ -96,4 +105,5 @@
     width:25px;
     background-color: yellow;
     border-radius: 50%;
+    border: 1px solid black;
 }
