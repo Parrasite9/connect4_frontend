@@ -227,7 +227,7 @@ const Board1 = (props) => {
                     {/* display game legend */}
                     <div className={BoardCSS.legend}>
                         <p>Your Color:  </p><div className={BoardCSS.P1legend}/>
-                        <p>{game.username2}: Color:  </p><div className={BoardCSS.P2legend}/>
+                        <p>{game.username2} Color:  </p><div className={BoardCSS.P2legend}/>
                     </div>
                     {/* Buttons to manage game*/}
                     <Button className={BoardCSS.deleteBtn}  variant="danger" size="sm"  onClick={() => {handleSubmitDelete(game)}}>Delete Game</Button>

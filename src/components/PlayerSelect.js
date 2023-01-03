@@ -9,14 +9,18 @@ const Player = (props) => {
         //============================================
         // Only used to display rules of the game. 
         <div className={PlayerCSS.playerSelectDiv} key={props.game.id}>
-            <h1>
-
-            </h1>
-            <div className={PlayerCSS.buttonDiv}>
-                <button className={PlayerCSS.button} onClick={()=>{props.setP1(true);  props.setSelect(false); props.setPlayerSelect(false);}}>P1</button>
+            {/* div for message  */}
+            <div>
+                <h1>Select Your Username</h1>
             </div>
+            {/* div for buttons */}
             <div className={PlayerCSS.buttonDiv}>
-                <button className={PlayerCSS.button} onClick={()=>{props.setP2(true); props.setSelect(false); props.setPlayerSelect(false);}}>P2</button>
+                <div>
+                    <button className={PlayerCSS.buttonP1} onClick={()=>{props.setP1(true);  props.setSelect(false); props.setPlayerSelect(false);}}>{props.game.username1}</button>
+                </div>
+                <div>
+                    <button className={PlayerCSS.buttonP2} onClick={()=>{props.setP2(true); props.setSelect(false); props.setPlayerSelect(false);}}>{props.game.username2}</button>
+                </div>
             </div>
         </div>
         )
