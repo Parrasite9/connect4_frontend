@@ -109,21 +109,41 @@
 }
 
 .deleteBtn{
+    color: black;
+}
+
+.resetBtn:hover{
+    color: white;
+}
+
+.winBtn{
+    color: black;
+}
+
+@media only screen and (min-width: 400px) {
+.deleteBtn{
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
-    color: black;
 }
 .resetBtn{
     border-radius: 0;
 }
 
-.resetBtn:hover{
-    border-radius: 0;
-    color: white;
-}
-
 .winBtn{
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
-    color: black;
+}
+}
+
+@media only screen and (max-width: 400px) {
+    .deleteBtn{
+        font-size: 0.6em;
+    }
+    .resetBtn{
+        font-size: 0.6em;
+    }
+    
+    .winBtn{
+        font-size: 0.6em;
+    }
 }
