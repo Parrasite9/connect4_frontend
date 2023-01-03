@@ -1,6 +1,6 @@
 import {useState} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {InputGroup, Form ,Button} from 'react-bootstrap';
+import {InputGroup, Form ,Button, Table} from 'react-bootstrap';
 import SelectCSS from '../select.module.css';
 
 const Select = (props) => {
@@ -20,12 +20,29 @@ const Select = (props) => {
           {/* cahnges state from app.js to hide selectgame.js */}
           <Button onClick={()=> props.setSelect(false)}>Cancel</Button>
         </div>
-      {/* {props.games.map((games) => {
+
+        {/* start of display table */}
+        <Table striped bordered hover>
+      <thead>
+        <tr>
+          <th>Game Name</th>
+          <th>Player 1</th>
+          <th>Player 2</th>
+        </tr>
+      </thead>
+      <tbody>
+        {/* map over database "game name, username1, and username2 in table" */}
+      {props.games.map((games) => {
         return (
-          <div className="game" key={games.id}>
-          </div>
+          <tr key={games.id}>
+            <td>{games.game_name}</td>
+            <td>{games.username1}</td>
+            <td>{games.username2}</td>
+          </tr>
         )
-    })} */}
+      })}
+          </tbody>
+        </Table>
       </div>
     )
 }
