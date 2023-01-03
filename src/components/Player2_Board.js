@@ -236,7 +236,7 @@ const Board2 = (props) => {
                 </div>
             </div>
         <div className={BoardCSS.boardContainer}>
-                        {/* buttons to change state of game in each column of connect4g game */}
+                        {/* buttons to change state of game in each column of connect4 game */}
             <button className={`${BoardCSS.button} ${game.user2_turn === false? BoardCSS.buttonNull : null }`} onClick={ () => {if(game.user2_turn === true){handleColumn1(game)}}}> &#8659; </button>
             <button className={`${BoardCSS.button} ${game.user2_turn === false? BoardCSS.buttonNull : null }`} onClick={ () => {if(game.user2_turn === true){handleColumn2(game)}}}> &#8659; </button>
             <button className={`${BoardCSS.button} ${game.user2_turn === false? BoardCSS.buttonNull : null }`} onClick={ () => {if(game.user2_turn === true){handleColumn3(game)}}}> &#8659; </button>

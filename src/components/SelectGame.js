@@ -1,23 +1,51 @@
 import {useState} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {DropdownButton, Dropdown} from 'react-bootstrap';  
+import {InputGroup, Form ,Button, Table} from 'react-bootstrap';
+import SelectCSS from '../select.module.css';
 
 const Select = (props) => {
   const [games, setGame] = useState({...props.games})
 
     return (
-      <>
-      <DropdownButton id="dropdown-item-button" title="Select Game">
+      <div className={SelectCSS.searchContainer}>
+        <div className={SelectCSS.searchbar}>
+          {/* search bar to search for existing game names */}
+          <InputGroup >
+            <InputGroup.Text id="basic-addon1">Game Name</InputGroup.Text>
+            <Form.Control
+            placeholder="Game Name"
+            aria-label="Username"
+            aria-describedby="basic-addon1"/>
+          </InputGroup>
+          {/* cahnges state from app.js to hide selectgame.js */}
+          <Button onClick={()=> props.setSelect(false)}>Cancel</Button>
+        </div>
+
+        {/* start of display table */}
+        <Table striped bordered hover>
+      <thead>
+        <tr>
+          <th>Game Name</th>
+          <th>Player 1</th>
+          <th>Player 2</th>
+        </tr>
+      </thead>
+      <tbody>
+        {/* map over database "game name, username1, and username2 in table" */}
       {props.games.map((games) => {
         return (
-          <div className="game" key={games.id}>
-            <Dropdown.Item as="button" eventKey={games.game_name}>{games.game_name}</Dropdown.Item>
-          </div>
+          <tr key={games.id}>
+            <td>{games.game_name}</td>
+            <td>{games.username1}</td>
+            <td>{games.username2}</td>
+          </tr>
         )
-    })}
-    </DropdownButton>
-      </>
+      })}
+          </tbody>
+        </Table>
+      </div>
     )
 }
-
+//=================================================
+// exports to app.js
 export default Select
