@@ -4,7 +4,7 @@ import { InputGroup, Form, Button, Table } from 'react-bootstrap';
 import SelectCSS from '../select.module.css';
 
 const Select = (props) => {
-  const [games, setGame] = useState({ ...props.games })
+  // const [games, setGame] = useState({ ...props.games })
   const [searchInput, setSearchInput] = useState('')
 
   const handleSearch = (event) => {
@@ -40,7 +40,7 @@ const Select = (props) => {
           {/* map over database "game name, username1, and username2 in table" */}
           {props.games.map((games) => {
             let searchRegEx = new RegExp(searchInput, 'gi')
-            if (games.game_name.search(searchRegEx) != -1 || games.username1.search(searchRegEx) != -1 || games.username2.search(searchRegEx) != -1) {
+            if (games.game_name.search(searchRegEx) !== -1 || games.username1.search(searchRegEx) !== -1 || games.username2.search(searchRegEx) !== -1) {
               return (
                 <tr key={games.id} onClick={() => props.setCurrentGameID(games.id)} >
                   <td>{games.game_name}</td>
@@ -48,6 +48,8 @@ const Select = (props) => {
                   <td>{games.username2}</td>
                 </tr>
               )
+            } else {
+              return null
             }
           })}
         </tbody>

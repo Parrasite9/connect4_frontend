@@ -78,6 +78,8 @@ const App = () => {
                 <Board2 game2={game} handleDelete={handleDelete} handleUpdate={handleUpdate} />
               </div>
             )
+          } else {
+            return null
           }
         })}
       </div>
