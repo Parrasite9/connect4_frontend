@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
 import Header from './components/Header.js'
 import Add from './components/Add.js'
 import Rules from './components/Rules.js'
@@ -17,13 +17,14 @@ const App = () => {
   let [showAdd, setAdd] = useState(false)
   let [showRules, setRules] = useState(false)
   let [showSelect, setSelect] = useState(false)
+  let [currentGameID, setCurrentGameID] = useState('')
 
   //=========================================================================
   //DELETE GAME
   const handleDelete = (event) => {
     axios.delete('https://connect4back.herokuapp.com/api/connect4/' + event.id).then((response) => {
-        getGames();
-      })
+      getGames();
+    })
   }
 
   //=========================================================================
@@ -31,51 +32,54 @@ const App = () => {
   const handleUpdate = (game) => {
     axios.put('https://connect4back.herokuapp.com/api/connect4/' + game.id, game).then((response) => {
       getGames();
-      })
+    })
   }
 
   //=========================================================================
   //Create new game with players
-    const handleCreate = (add) => {
-      axios.post('https://connect4back.herokuapp.com/api/connect4', add).then((response) => {
-          getGames();
-        })
-    }
- //=========================================================================
- //collect from database
+  const handleCreate = (add) => {
+    axios.post('https://connect4back.herokuapp.com/api/connect4', add).then((response) => {
+      getGames();
+    })
+  }
+  //=========================================================================
+  //collect from database
   const getGames = () => {
-    axios.get('https://connect4back.herokuapp.com/api/connect4').then((response) => 
-    setGames(response.data),
-    // , (err) => 
-    // console.log(err)
+    axios.get('https://connect4back.herokuapp.com/api/connect4').then((response) =>
+      setGames(response.data),
+      // , (err) => 
+      // console.log(err)
     )
   }
- //=========================================================================
- //useEffect to collect from database
+  //=========================================================================
+  //useEffect to collect from database
   useEffect(() => {
     getGames();
   }, [])
 
   return (
     <div className={IndexCSS.appContainer}>
-    <Header setAdd={setAdd} setRules={setRules} setSelect={setSelect}/>
-    <div key={games.id}>
-      {
-        showRules === true ? <Rules setRules={setRules}/> : null
-      }
-      {
-        showAdd === true ? <Add handleCreate={handleCreate} setAdd={setAdd} /> : null
-      }
-      {
-        showSelect === true ? <Select games={games} setSelect={setSelect}/> : null
-      } 
-      {games.map((game) => {
-      return (
-        <div key={game.id}>
-          <Board1 game1={game} handleDelete={handleDelete} handleUpdate={handleUpdate}/>
-          <Board2 game2={game} handleDelete={handleDelete} handleUpdate={handleUpdate}/>
-        </div>
-      )})}
+      <Header setAdd={setAdd} setRules={setRules} setSelect={setSelect} />
+      <div key={games.id}>
+        {
+          showRules === true ? <Rules setRules={setRules} /> : null
+        }
+        {
+          showAdd === true ? <Add handleCreate={handleCreate} setAdd={setAdd} /> : null
+        }
+        {
+          showSelect === true ? <Select games={games} setSelect={setSelect} setCurrentGameID={setCurrentGameID} /> : null
+        }
+        {games.map((game) => {
+          if (game.id === currentGameID) {
+            return (
+              <div key={game.id}>
+                <Board1 game1={game} handleDelete={handleDelete} handleUpdate={handleUpdate} />
+                <Board2 game2={game} handleDelete={handleDelete} handleUpdate={handleUpdate} />
+              </div>
+            )
+          }
+        })}
       </div>
     </div>
   )
