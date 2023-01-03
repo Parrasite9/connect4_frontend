@@ -5,6 +5,7 @@ import RulesCSS from '../rules.module.css';
 
 const Rules = (props) => {
 
+
     return (
         //============================================
         // Only used to display rules of the game. 
