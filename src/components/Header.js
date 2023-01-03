@@ -17,7 +17,7 @@ const Header = (props) => {
             </div>
         </a>
         {/* select game allows user to search through exisiting games. Changes display state on App.js */}
-        <a className={HeaderCSS.headerSelect}>
+        <a href="#" className={HeaderCSS.headerSelect}>
             <div onClick={()=>{props.setSelect(true)}}>
                 <p>Select Game</p>
             </div>
