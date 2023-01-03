@@ -5,6 +5,11 @@ import SelectCSS from '../select.module.css';
 
 const Select = (props) => {
   const [games, setGame] = useState({ ...props.games })
+  const [searchInput, setSearchInput] = useState('')
+
+  const handleSearch = (event) => {
+    setSearchInput(event.target.value)
+  }
 
   return (
     <div className={SelectCSS.searchContainer}>
@@ -15,7 +20,8 @@ const Select = (props) => {
           <Form.Control
             placeholder="Game Name"
             aria-label="Username"
-            aria-describedby="basic-addon1" />
+            aria-describedby="basic-addon1"
+            onChange={handleSearch} />
         </InputGroup>
         {/* cahnges state from app.js to hide selectgame.js */}
         <Button onClick={() => props.setSelect(false)}>Cancel</Button>
@@ -33,13 +39,16 @@ const Select = (props) => {
         <tbody>
           {/* map over database "game name, username1, and username2 in table" */}
           {props.games.map((games) => {
-            return (
-              <tr key={games.id} onClick={() => props.setCurrentGameID(games.id)} >
-                <td>{games.game_name}</td>
-                <td>{games.username1}</td>
-                <td>{games.username2}</td>
-              </tr>
-            )
+            let searchRegEx = new RegExp(searchInput, 'gi')
+            if (games.game_name.search(searchRegEx) != -1 || games.username1.search(searchRegEx) != -1 || games.username2.search(searchRegEx) != -1) {
+              return (
+                <tr key={games.id} onClick={() => props.setCurrentGameID(games.id)} >
+                  <td>{games.game_name}</td>
+                  <td>{games.username1}</td>
+                  <td>{games.username2}</td>
+                </tr>
+              )
+            }
           })}
         </tbody>
       </Table>
