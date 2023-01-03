@@ -72,7 +72,7 @@ const App = () => {
           showAdd === true ? <Add handleCreate={handleCreate} setAdd={setAdd} /> : null
         }
         {
-          showSelect === true ? <Select games={games} setSelect={setSelect} setCurrentGameID={setCurrentGameID} /> : null
+          showSelect === true ? <Select games={games} setSelect={setSelect} setCurrentGameID={setCurrentGameID} setPlayerSelect={setPlayerSelect}/> : null
         }
         {
 
