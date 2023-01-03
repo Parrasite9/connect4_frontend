@@ -217,7 +217,7 @@ const Board1 = (props) => {
             {/* display message saying whose turn it is */}
             <div className={BoardCSS.message}>
                 {
-                    game.user1_turn === true ? <h3>Select Option Below</h3>: <h3>Opponent Turn</h3>
+                    game.user1_turn === true ? <h3> {game.username1}: Select Option Below</h3>: <h3>Opponent Turn</h3>
                 }
                 {
                     game.winner === true ? <h1>There has been a Winner!</h1>: null
@@ -227,7 +227,7 @@ const Board1 = (props) => {
                     {/* display game legend */}
                     <div className={BoardCSS.legend}>
                         <p>Your Color:  </p><div className={BoardCSS.P1legend}/>
-                        <p>Opponent Color:  </p><div className={BoardCSS.P2legend}/>
+                        <p>{game.username2}: Color:  </p><div className={BoardCSS.P2legend}/>
                     </div>
                     {/* Buttons to manage game*/}
                     <Button className={BoardCSS.deleteBtn}  variant="danger" size="sm"  onClick={() => {handleSubmitDelete(game)}}>Delete Game</Button>
