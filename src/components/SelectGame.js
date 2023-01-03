@@ -1,23 +1,34 @@
 import {useState} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {DropdownButton, Dropdown} from 'react-bootstrap';  
+import {InputGroup, Form ,Button} from 'react-bootstrap';
+import SelectCSS from '../select.module.css';
 
 const Select = (props) => {
   const [games, setGame] = useState({...props.games})
 
     return (
-      <>
-      <DropdownButton id="dropdown-item-button" title="Select Game">
-      {props.games.map((games) => {
+      <div className={SelectCSS.searchContainer}>
+        <div className={SelectCSS.searchbar}>
+          {/* search bar to search for existing game names */}
+          <InputGroup >
+            <InputGroup.Text id="basic-addon1">Game Name</InputGroup.Text>
+            <Form.Control
+            placeholder="Game Name"
+            aria-label="Username"
+            aria-describedby="basic-addon1"/>
+          </InputGroup>
+          {/* cahnges state from app.js to hide selectgame.js */}
+          <Button onClick={()=> props.setSelect(false)}>Cancel</Button>
+        </div>
+      {/* {props.games.map((games) => {
         return (
           <div className="game" key={games.id}>
-            <Dropdown.Item as="button" eventKey={games.game_name}>{games.game_name}</Dropdown.Item>
           </div>
         )
-    })}
-    </DropdownButton>
-      </>
+    })} */}
+      </div>
     )
 }
-
+//=================================================
+// exports to app.js
 export default Select
