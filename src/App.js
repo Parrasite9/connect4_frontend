@@ -67,7 +67,7 @@ const App = () => {
         showAdd === true ? <Add handleCreate={handleCreate} setAdd={setAdd} /> : null
       }
       {
-        showSelect === true ? <Select setSelect={setSelect}/> : null
+        showSelect === true ? <Select games={games} setSelect={setSelect}/> : null
       } 
       {games.map((game) => {
       return (
