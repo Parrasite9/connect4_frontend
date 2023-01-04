@@ -71,7 +71,7 @@ const Select = (props) => {
             let searchRegEx = new RegExp(searchInput, 'gi')
             if (games.game_name.search(searchRegEx) !== -1 || games.username1.search(searchRegEx) !== -1 || games.username2.search(searchRegEx) !== -1) {
               return (
-                <tr key={games.id} onClick={() => props.setCurrentGameID(games.id)} >
+                <tr key={games.id} onClick={() => {props.setCurrentGameID(games.id); props.setPlayerSelect(true); props.setSelect(false)}} >
                   <td>{games.game_name}</td>
                   <td>{games.username1}</td>
                   <td>{games.username2}</td>
