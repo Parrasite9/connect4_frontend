@@ -21,19 +21,16 @@ const Select = (props) => {
       }
     }
     totalPages = Math.ceil(paginationArray.length / 5) // resetting the number of pages to reflect the search results.
-    console.log(totalPages);
-    console.log(paginationArray);
   }
 
   const handleSearch = (event) => {
     setSearchInput(event.target.value)
     updatePaginationArray()
+    paginate()
   }
 
   const handlePageChange = (event, pageNumber) => {
-    console.log(pageNumber);
     setCurrentPage(pageNumber)
-    // console.log(currentPage);
   }
 
   const isGameOnPage = (gameID) => {
@@ -41,7 +38,6 @@ const Select = (props) => {
     let hi = (currentPage * 5) - 1
     let lo = (currentPage * 5) - 5
     let gameIndex = paginationArray.indexOf(gameID)
-    console.log(`hi - ${hi} -- lo - ${lo}, gameindex ${gameIndex} and gameid ${gameID}`);
     if (gameIndex >= lo && gameIndex <= hi) {
       return true
     } else {
