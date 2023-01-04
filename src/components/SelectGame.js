@@ -61,7 +61,7 @@ const Select = (props) => {
 
   useEffect(() => {
     paginate()
-  }, [])
+  }, [currentPage])
 
   return (
     <div className={SelectCSS.searchContainer}>
