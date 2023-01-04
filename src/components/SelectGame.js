@@ -69,32 +69,27 @@ const Select = (props) => {
         {/* search bar to search for existing game names */}
         <InputGroup >
           <InputGroup.Text id="basic-addon1">Game Name</InputGroup.Text>
-          <Form.Control
-            placeholder="Game Name"
-            aria-label="Username"
-            aria-describedby="basic-addon1"
-            onChange={handleSearch} />
+          <Form.Control placeholder=" Search Game Name" aria-label="Username" aria-describedby="basic-addon1" onChange={handleSearch} />
         </InputGroup>
-        {/* cahnges state from app.js to hide selectgame.js */}
-        <Button onClick={() => props.setSelect(false)}>Close</Button>
       </div>
 
       {/* start of display table */}
-      <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th>Game Name</th>
-            <th>Player 1</th>
-            <th>Player 2</th>
-          </tr>
-        </thead>
-        <tbody>
+      <div className={SelectCSS.table}>
+        <Table striped bordered hover>
+          <thead>
+            <tr>
+              <th>Game Name</th>
+              <th>Player 1</th>
+              <th>Player 2</th>
+            </tr>
+          </thead>
+          <tbody>
           {/* map over database "game name, username1, and username2 in table" */}
           {props.games.map((games, i) => {
             if ((games.game_name.search(searchRegEx) !== -1 || games.username1.search(searchRegEx) !== -1 || games.username2.search(searchRegEx) !== -1) && isGameOnPage(games.id)) {
               return (
                 <tr key={games.id} onClick={() => { props.setCurrentGameID(games.id); props.setPlayerSelect(true); props.setSelect(false) }} >
-                  <td>{games.game_name}</td>
+                  <td><a herf="#">{games.game_name}</a></td>
                   <td>{games.username1}</td>
                   <td>{games.username2}</td>
                 </tr>
@@ -104,10 +99,16 @@ const Select = (props) => {
             }
           })}
         </tbody>
-      </Table>
-      <Pagination>
-        {pageElements}
-      </Pagination>
+        </Table>
+      </div>
+      {/* add page numbers */}
+      <div  className={SelectCSS.buttons}>
+        <Pagination>
+          {pageElements}
+        </Pagination>
+        {/* cahnges state from app.js to hide selectgame.js */}
+        <Button  variant="secondary" onClick={() => props.setSelect(false)}>Close</Button>
+      </div>
     </div>
   )
 }
