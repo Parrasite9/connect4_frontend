@@ -13,14 +13,21 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import IndexCSS from './index.module.css';
 
 const App = () => {
-
+  // API data
   let [games, setGames] = useState([])
+  // show/hides Add.js
   let [showAdd, setAdd] = useState(false)
-  let [showRules, setRules] = useState(false)
+  // show/hides Rules.js
+  let [showRules, setRules] = useState(true)
+  // show/hides SelectGame.js
   let [showSelect, setSelect] = useState(false)
+    // show/hides the PlayerSelect and Player1/Player2 board until choice is made on SelectGame.js
   let [currentGameID, setCurrentGameID] = useState('')
+    // show/hides PlayerSelect.js page
   let [playerSelect, setPlayerSelect] = useState(true)
+    // show/hides Player1_Board.js page
   let [showP1, setP1] = useState(false)
+  // show/hides Player2_Board.js page
   let [showP2, setP2] = useState(false)
 
   //=========================================================================
@@ -61,16 +68,22 @@ const App = () => {
     getGames();
   }, [])
 
+  // ========================================================================
+  // display page
   return (
     <div className={IndexCSS.appContainer}>
+      {/* Header of app */}
       <Header setAdd={setAdd} setRules={setRules} setSelect={setSelect} setCurrentGameID={setCurrentGameID} setP1={setP1} setP2={setP2}/>
       <div key={games.id}>
+        {/* Show/Hide Rules.js */}
         {
           showRules === true ? <Rules setRules={setRules}/> : null
         }
+        {/* Show/Hide Add.js */}
         {
-          showAdd === true ? <Add handleCreate={handleCreate} setAdd={setAdd} /> : null
+          showAdd === true ? <Add handleCreate={handleCreate} setAdd={setAdd} setSelect={setSelect}/> : null
         }
+        {/* show/hide SelectGame.js */}
         {
           showSelect === true ? <Select games={games} setSelect={setSelect} setCurrentGameID={setCurrentGameID} setPlayerSelect={setPlayerSelect}/> : null
         }
