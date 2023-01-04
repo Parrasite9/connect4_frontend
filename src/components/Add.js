@@ -10,15 +10,21 @@ const Add = (props) => {
   //================================================================
   //   submit character with props handle
     const handleChange = (event) => {
+      // on event change log the new data and change the state
       setGame({ ...game, [event.target.name]: event.target.value })
     }
   //================================================================
   //   submit character with props handle
     const handleSubmit = (event) => {
       event.preventDefault();
+      // create the game
       props.handleCreate(game);
+      // update state of game to leave the input boxes blank
       setGame(emptyGame);
+      // hide add.js after submitting
       props.setAdd(false)
+      // show list of games after submitting
+      props.setSelect(true)
     }
   
     return (
