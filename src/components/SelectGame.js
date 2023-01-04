@@ -89,9 +89,9 @@ const Select = (props) => {
             if ((games.game_name.search(searchRegEx) !== -1 || games.username1.search(searchRegEx) !== -1 || games.username2.search(searchRegEx) !== -1) && isGameOnPage(games.id)) {
               return (
                 <tr key={games.id} onClick={() => { props.setCurrentGameID(games.id); props.setPlayerSelect(true); props.setSelect(false) }} >
-                  <td><a herf="#">{games.game_name}</a></td>
-                  <td>{games.username1}</td>
-                  <td>{games.username2}</td>
+                  <td style={{cursor:"pointer"}}><u>{games.game_name}</u></td>
+                  <td style={{cursor:"pointer"}}>{games.username1}</td>
+                  <td style={{cursor:"pointer"}}>{games.username2}</td>
                 </tr>
               )
             } else {
