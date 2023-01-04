@@ -1,15 +1,44 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { InputGroup, Form, Button, Table } from 'react-bootstrap';
+import { InputGroup, Form, Button, Table, Pagination } from 'react-bootstrap';
 import SelectCSS from '../select.module.css';
 
 const Select = (props) => {
   // const [games, setGame] = useState({ ...props.games })
   const [searchInput, setSearchInput] = useState('')
+  const [currentPage, setCurrentPage] = useState(1)
+  const [pageElements, setPageElements] = useState([])
+  let totalPages = Math.ceil(props.games.length / 5)
+  let recordIndex = []
 
   const handleSearch = (event) => {
     setSearchInput(event.target.value)
+    console.log(props.games.length);
   }
+
+  const handlePageChange = (event, pageNumber) => {
+    console.log(pageNumber);
+    setCurrentPage(pageNumber)
+    // console.log(currentPage);
+  }
+
+
+  const paginate = () => {
+    const pages = [];
+    for (let i = 1; i <= totalPages; i++) {
+      console.log('making pages' + i);
+      pages.push(
+        <Pagination.Item key={i} value={i} active={i === currentPage} onClick={(e) => handlePageChange(e, i)}>
+          {i}
+        </Pagination.Item>,
+      );
+    }
+    setPageElements(pages)
+  }
+
+  useEffect(() => {
+    paginate()
+  }, [])
 
   return (
     <div className={SelectCSS.searchContainer}>
@@ -24,7 +53,7 @@ const Select = (props) => {
             onChange={handleSearch} />
         </InputGroup>
         {/* cahnges state from app.js to hide selectgame.js */}
-        <Button onClick={() => props.setSelect(false)}>Cancel</Button>
+        <Button onClick={() => props.setSelect(false)}>Close</Button>
       </div>
 
       {/* start of display table */}
@@ -38,7 +67,7 @@ const Select = (props) => {
         </thead>
         <tbody>
           {/* map over database "game name, username1, and username2 in table" */}
-          {props.games.map((games) => {
+          {props.games.map((games, i) => {
             let searchRegEx = new RegExp(searchInput, 'gi')
             if (games.game_name.search(searchRegEx) !== -1 || games.username1.search(searchRegEx) !== -1 || games.username2.search(searchRegEx) !== -1) {
               return (
@@ -54,6 +83,9 @@ const Select = (props) => {
           })}
         </tbody>
       </Table>
+      <Pagination>
+        {pageElements}
+      </Pagination>
     </div>
   )
 }
