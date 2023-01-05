@@ -1,6 +1,6 @@
 .formContainer{
     border: 1px solid black;
-    background-color: rgba(255,255,255,0.7);
+    background-color: white;
     justify-content: center;
     align-items: center;
     flex-direction: column;

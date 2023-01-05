@@ -1,4 +1,31 @@
 .searchContainer{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
     align-content: center;
     max-width: 700px;
+    margin: auto;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.searchbar{
+    margin: 1em 1em 0 1em;
+}
+
+.table{
+    margin: 1em 1em 0 1em;
+}
+
+.buttons{
+    text-align: center;
+    flex-direction: row;
+    align-content: center;
+    margin: 1em;
+}
+
+@media only screen and (max-width: 600px) {
+    .table, .searchbar{
+        font-size: 0.8em;
+    }
 }

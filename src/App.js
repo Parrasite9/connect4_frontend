@@ -109,6 +109,8 @@ const App = () => {
                 }
               </div>
             )
+          } else {
+            return null
           }
         })}
       </div>
