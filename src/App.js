@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Header from './components/Header.js'
 import Add from './components/Add.js'
 import Rules from './components/Rules.js'
@@ -39,11 +39,11 @@ const App = () => {
   let [showRules, setRules] = useState(true)
   // show/hides SelectGame.js
   let [showSelect, setSelect] = useState(false)
-    // show/hides the PlayerSelect and Player1/Player2 board until choice is made on SelectGame.js
+  // show/hides the PlayerSelect and Player1/Player2 board until choice is made on SelectGame.js
   let [currentGameID, setCurrentGameID] = useState('')
-    // show/hides PlayerSelect.js page
+  // show/hides PlayerSelect.js page
   let [playerSelect, setPlayerSelect] = useState(true)
-    // show/hides Player1_Board.js page
+  // show/hides Player1_Board.js page
   let [showP1, setP1] = useState(false)
   // show/hides Player2_Board.js page
   let [showP2, setP2] = useState(false)
@@ -96,55 +96,78 @@ const App = () => {
   }, [])
 
   // ========================================================================
+  // polling code - https://blog.bitsrc.io/polling-in-react-using-the-useinterval-custom-hook-e2bcefda4197 lots used from here
+  const useInterval = (callback, delay) => {
+    const savedCallback = useRef()
+    useEffect(() => {
+      savedCallback.current = callback;
+    }, [callback]);
+
+    useEffect(() => {
+      function tick() {
+        savedCallback.current();
+      }
+      if (delay != null) {
+        const id = setInterval(tick, delay);
+        return () => {
+          clearInterval(id)
+        }
+      }
+    }, [callback, delay])
+  }
+
+  useInterval(getGames, 5000)
+
+  // ========================================================================
   // display page
   return (
     <>
       {isLoading && <img className={IndexCSS.loadingGif} src={loadingGif} alt='loading spinner' />}
-      {!isLoading &&  (
-      <div className={IndexCSS.appContainer}>
-        {/* Header of app */}
-        <Header setAdd={setAdd} setRules={setRules} setSelect={setSelect} setCurrentGameID={setCurrentGameID} setP1={setP1} setP2={setP2}/>
-        <div key={games.id}>
-          {/* Show/Hide Rules.js */}
-          {
-            showRules === true ? <Rules setRules={setRules}/> : null
-          }
-          {/* Show/Hide Add.js */}
-          {
-            showAdd === true ? <Add handleCreate={handleCreate} setAdd={setAdd} setSelect={setSelect}/> : null
-          }
-          {/* show/hide SelectGame.js */}
-          {
-            showSelect === true ? <Select games={games} setSelect={setSelect} setCurrentGameID={setCurrentGameID} setPlayerSelect={setPlayerSelect}/> : null
-          }
-          {
-
-          }
-          {/* render game based on game ID selected from SelectGame.js */}
-          {games.map((game) => {
-            if (game.id === currentGameID) {
-              return (
-                <div key={game.id}>
-                  {/* Have player select P1 or P2, then render page */}
-                  {
-                    playerSelect === true ? <Player game={game} setP1={setP1} setP2={setP2} setSelect={setSelect} setPlayerSelect={setPlayerSelect}/>: null
-                  }
-                  {/* show P1 page if true, else null */}
-                  {
-                    showP1 === true? <Board1 game1={game} handleDelete={handleDelete} handleUpdate={handleUpdate} /> : null
-                  }
-                  {/* show P1 page if true, else null */}
-                  {
-                    showP2 === true? <Board2 game2={game} handleDelete={handleDelete} handleUpdate={handleUpdate} /> : null
-                  }
-                </div>
-              )
-            } else {
-              return null
+      {!isLoading && (
+        <div className={IndexCSS.appContainer}>
+          {/* Header of app */}
+          <Header setAdd={setAdd} setRules={setRules} setSelect={setSelect} setCurrentGameID={setCurrentGameID} setP1={setP1} setP2={setP2} />
+          <div key={games.id}>
+            {/* Show/Hide Rules.js */}
+            {
+              showRules === true ? <Rules setRules={setRules} /> : null
             }
-          })}
+            {/* Show/Hide Add.js */}
+            {
+              showAdd === true ? <Add handleCreate={handleCreate} setAdd={setAdd} setSelect={setSelect} /> : null
+            }
+            {/* show/hide SelectGame.js */}
+            {
+              showSelect === true ? <Select games={games} setSelect={setSelect} setCurrentGameID={setCurrentGameID} setPlayerSelect={setPlayerSelect} /> : null
+            }
+            {
+
+            }
+            {/* render game based on game ID selected from SelectGame.js */}
+            {games.map((game) => {
+              if (game.id === currentGameID) {
+                return (
+                  <div key={game.id}>
+                    {/* Have player select P1 or P2, then render page */}
+                    {
+                      playerSelect === true ? <Player game={game} setP1={setP1} setP2={setP2} setSelect={setSelect} setPlayerSelect={setPlayerSelect} /> : null
+                    }
+                    {/* show P1 page if true, else null */}
+                    {
+                      showP1 === true ? <Board1 game1={game} handleDelete={handleDelete} handleUpdate={handleUpdate} /> : null
+                    }
+                    {/* show P1 page if true, else null */}
+                    {
+                      showP2 === true ? <Board2 game2={game} handleDelete={handleDelete} handleUpdate={handleUpdate} /> : null
+                    }
+                  </div>
+                )
+              } else {
+                return null
+              }
+            })}
+          </div>
         </div>
-      </div> 
       )}
     </>
   )
