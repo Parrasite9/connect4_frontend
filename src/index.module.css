@@ -11,3 +11,16 @@ html, body, #root{
     justify-content: center;
     flex-direction: column;
 }
+
+.visualHeader {
+    animation-duration: 5s;
+    display: none;
+}
+
+.loadingGif {
+    width: 50%;
+    height: auto;
+    margin-left: 25%;
+    margin-top: 2.5%;
+}
+
