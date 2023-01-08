@@ -137,10 +137,8 @@ const App = () => {
 
     webSocket.onmessage = (event) => {
       let receivedData = JSON.parse(event.data)
-      console.log("received data for game id: " + receivedData.instance.id);
-      if (receivedData.instance.id == currentGameID) {
-        getGames();
-      }
+      console.log("received data for game id: " + receivedData.instance.id + "currentgameID: " + currentGameID);
+      getGames();
     }
 
   }
