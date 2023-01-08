@@ -29,6 +29,26 @@ import l12 from './loading-images/l12.gif'
 
 const loadingGifsList = [l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11, l12]
 
+// ========================================================================
+// polling code - https://blog.bitsrc.io/polling-in-react-using-the-useinterval-custom-hook-e2bcefda4197 lots used from here
+// const useInterval = (callback, delay) => {
+//   const savedCallback = useRef()
+//   useEffect(() => {
+//     savedCallback.current = callback;
+//   }, [callback]);
+
+//   useEffect(() => {
+//     function tick() {
+//       savedCallback.current();
+//     }
+//     if (delay != null) {
+//       const id = setInterval(tick, delay);
+//       return () => {
+//         clearInterval(id)
+//       }
+//     }
+//   }, [callback, delay])
+// }
 
 const App = () => {
   // API data
@@ -89,35 +109,40 @@ const App = () => {
   //useEffect to collect from database
   useEffect(() => {
     getGames();
+    websocketConnect();
 
     setTimeout(() => {
       setIsLoading(false);
     }, 5000);
   }, [])
 
+  // useInterval(getGames, 5000)
   // ========================================================================
-  // polling code - https://blog.bitsrc.io/polling-in-react-using-the-useinterval-custom-hook-e2bcefda4197 lots used from here
-  const useInterval = (callback, delay) => {
-    const savedCallback = useRef()
-    useEffect(() => {
-      savedCallback.current = callback;
-    }, [callback]);
+  // websocket connection - will "getgames" each time there is an update
+  const websocketConnect = () => {
+    const subscriptionMsg = {
+      "type": "subscribe",
+      "id": 1337,
+      "model": "connect4.Connect4",
+      "action": "list"
+    }
 
-    useEffect(() => {
-      function tick() {
-        savedCallback.current();
+    const webSocket = new WebSocket('wss://connect4back.herokuapp.com/ws/api')
+
+    webSocket.onopen = (event) => {
+      console.log('connected, onopen triggered, sending stringified subscription message');
+      webSocket.send(JSON.stringify(subscriptionMsg))
+    }
+
+    webSocket.onmessage = (event) => {
+      let receivedData = JSON.parse(event.data)
+      console.log("received data for game id: " + receivedData.instance.id);
+      if (receivedData.instance.id === currentGameID) {
+        getGames();
       }
-      if (delay != null) {
-        const id = setInterval(tick, delay);
-        return () => {
-          clearInterval(id)
-        }
-      }
-    }, [callback, delay])
+    }
+
   }
-
-  useInterval(getGames, 5000)
-
   // ========================================================================
   // display page
   return (
