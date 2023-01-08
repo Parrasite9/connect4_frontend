@@ -119,6 +119,12 @@ const App = () => {
   // useInterval(getGames, 5000)
   // ========================================================================
   // websocket connection - will "getgames" each time there is an update
+  window.addEventListener('beforeunload', function (e) {
+    e.preventDefault();
+    alert('testingwindowclose')
+  })
+
+
   const websocketConnect = () => {
     const subscriberID = Math.floor(Math.random() * 10000)
     const subscriptionMsg = {
