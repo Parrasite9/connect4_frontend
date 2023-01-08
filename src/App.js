@@ -120,9 +120,10 @@ const App = () => {
   // ========================================================================
   // websocket connection - will "getgames" each time there is an update
   const websocketConnect = () => {
+    const subscriberID = Math.floor(Math.random() * 10000)
     const subscriptionMsg = {
       "type": "subscribe",
-      "id": 1337,
+      "id": subscriberID,
       "model": "connect4.Connect4",
       "action": "list"
     }
@@ -130,14 +131,14 @@ const App = () => {
     const webSocket = new WebSocket('wss://connect4back.herokuapp.com/ws/api')
 
     webSocket.onopen = (event) => {
-      console.log('connected, onopen triggered, sending stringified subscription message');
+      console.log('connected, onopen triggered, sending stringified subscription message, subscriber ID: ' + subscriptionMsg.id);
       webSocket.send(JSON.stringify(subscriptionMsg))
     }
 
     webSocket.onmessage = (event) => {
       let receivedData = JSON.parse(event.data)
       console.log("received data for game id: " + receivedData.instance.id);
-      if (receivedData.instance.id === currentGameID) {
+      if (receivedData.instance.id == currentGameID) {
         getGames();
       }
     }
